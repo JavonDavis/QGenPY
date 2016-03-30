@@ -1,9 +1,7 @@
-SimplePolynomial:
-  title: 'Simple polynomial question'
+SimpleAddition:
+  title: 'Simple addition question'
   type: 'multichoice'
   params:
-    c:
-      poly_random:
     a:
       random:
         start: 0
@@ -12,10 +10,11 @@ SimplePolynomial:
       random:
         start: 0
         end: 100
-  body: 'What is the highest degree of the following polynomial ? {c}'
+  body: '#What is the sum of the following?
+  {a} + {b}'
   answer:
-    - 'The answer is $highest_degree("{c}")$'
-  distractor:
     - 'The answer is ${a} + {b}$'
+  distractor:
+    - 'The answer is ${a} / {b}$'
     - 'The answer is ${a} - {b}$'
     - 'The answer is ${a} * {b}$'

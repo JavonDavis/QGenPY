@@ -1,5 +1,6 @@
 import yaml
 import random
+# import moodle_xml_builder as mxb
 
 
 class Polynomial():
@@ -105,6 +106,8 @@ class Question(object):
         print self.body.format(**params)
         print "********Options*********"
 
+        # mxb.build_xml_for_moodle(self.title, self.body, self)
+
         for answer in self.answers:
             while "$" in answer:
                 start_index = answer.index('$')
@@ -116,7 +119,7 @@ class Question(object):
                 answer = answer.replace(substr, str(eval(eval_block)))
             print answer
         for distractor in self.distractors:
-            while "$" in answer:
+            while "$" in distractor:
                 start_index = distractor.index('$')
                 end_index = distractor.index('$', start_index + 1) + 1
                 substr = distractor[start_index:end_index]
@@ -141,6 +144,7 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
                 for i in range(0, number_of_questions):
                     question.gen_moodle_xml()
                 print "-----------------------------"
+                # mxb.build_xml_for_moodle("Random Title", "Random", "Random")
             else:
                 print dict_value
         except yaml.YAMLError as exc:

@@ -14,7 +14,7 @@ setup(
     description='Question generating language',
     long_description=readme,
     author='Javon Davis, Howard Edwards, Alexander Nicholson',
-    author_email='javonldavis14@gmail.com',  # TODO - add the other contributor emails
+    author_email='javonldavis14@gmail.com, howarde.jr@hotmail.com, alexj.nich@hotmail.com',
     url='',  # TODO - add repository url
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))

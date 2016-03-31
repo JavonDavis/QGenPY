@@ -48,14 +48,14 @@ def test_polynomial():
 
 def highest_degree(poly):
     polys = poly.split("+")
-    polys = map(lambda x: x.replace("x^",""), polys)
+    polys = map(lambda x: x.replace("x^", ""), polys)
     degrees = map(int, polys)
     return max(degrees)
 
 
 def poly_random(values):
     polynomials = []
-    for i in range(0,values['count']):
+    for i in range(0, values['count']):
         poly1 = Polynomial()
         poly2 = Polynomial()
         poly3 = Polynomial()
@@ -69,7 +69,7 @@ def rand(values):
     return random.sample(range(values['start'], values['end']), values['count'])
 
 
-functions = {'random': rand,'poly_random':poly_random}
+functions = {'random': rand, 'poly_random': poly_random}
 
 """Class to model a generate questions"""
 

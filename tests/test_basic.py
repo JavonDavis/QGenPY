@@ -1,6 +1,10 @@
 from tests.context import qgen
 
 import unittest
+import os
+
+TEST_0_YML_PATH = os.getcwd() + "/test0.yml"
+TEST_1_YML_PATH = os.getcwd() + "/test1.yml"
 
 
 class TestSuite(unittest.TestCase):
@@ -13,11 +17,10 @@ class TestSuite(unittest.TestCase):
         qgen.test_polynomial()
 
     def test_b_generate_moodle_xml(self):
-        qgen.build_moodle_xml("/Users/javon/Desktop/Applications/Python/QGen/tests/test0.yml",question="SimplePolynomial", number_of_questions=10)
+        qgen.build_moodle_xml(TEST_0_YML_PATH, question="SimplePolynomial", number_of_questions=10)
 
     def test_b_generate_moodle_xml_2(self):
-        qgen.build_moodle_xml("/Users/javon/Desktop/Applications/Python/QGen/tests/test1.yml",
-                              question="SimpleAddition", number_of_questions=10)
+        qgen.build_moodle_xml(TEST_1_YML_PATH, question="SimpleAddition", number_of_questions=10)
 
 
 if __name__ == '__main__':

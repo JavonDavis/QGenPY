@@ -107,13 +107,15 @@ class Question(object):
 
         # TODO - Handle multiple blocks to be evaluated
         for answer in self.answers:
-            start_index = answer.index('$')
-            end_index = answer.index('$', start_index + 1) + 1
-            substr = answer[start_index:end_index]
+            while "$" in answer:
+                start_index = answer.index('$')
+                end_index = answer.index('$', start_index + 1) + 1
+                substr = answer[start_index:end_index]
 
-            eval_block = substr[1:len(substr) - 1]
-            eval_block = eval_block.format(**params)
-            print answer.replace(substr, str(eval(eval_block)))
+                eval_block = substr[1:len(substr) - 1]
+                eval_block = eval_block.format(**params)
+                answer = answer.replace(substr, str(eval(eval_block)))
+            print answer
         for distractor in self.distractors:
             start_index = distractor.index('$')
             end_index = distractor.index('$', start_index + 1) + 1

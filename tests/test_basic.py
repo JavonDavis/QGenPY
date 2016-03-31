@@ -3,8 +3,8 @@ from tests.context import qgen
 import unittest
 import os
 
-TEST_0_YML_PATH = os.getcwd() + "/test0.yml"
-TEST_1_YML_PATH = os.getcwd() + "/test1.yml"
+TEST_0_YML_PATH = os.getcwd() + "/tests/test0.yml"
+TEST_1_YML_PATH = os.getcwd() + "/tests/test1.yml"
 
 
 class TestSuite(unittest.TestCase):

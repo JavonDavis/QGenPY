@@ -17,10 +17,10 @@ class TestSuite(unittest.TestCase):
         qgen.test_polynomial()
 
     def test_b_generate_moodle_xml(self):
-        qgen.build_moodle_xml(TEST_0_YML_PATH, question="SimplePolynomial", number_of_questions=10)
+        qgen.build_moodle_xml(TEST_0_YML_PATH, question="SimplePolynomial", number_of_questions=2)
 
     def test_b_generate_moodle_xml_2(self):
-        qgen.build_moodle_xml(TEST_1_YML_PATH, question="SimpleAddition", number_of_questions=10)
+        qgen.build_moodle_xml(TEST_1_YML_PATH, question="SimpleAddition", number_of_questions=2)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,22 @@
+SimpleSets:
+  title: 'Simple set question'
+  type: 'multichoice'
+  params:
+    room:
+      set: bathroom, office, kitchen, washroom
+    bathroom:
+      set: toothbrush, toothpaste, shampoo, soap
+    kitchen:
+      set: knife, spoon, stove, fork
+    office:
+      set: pen, stapler, paper, folder, computer
+    washroom:
+      set: pan, washing machine, dryer, clothespin
+
+  body: '#Which item would you find in the following room?
+  {room}'
+  answer:
+    - 'The answer is ${room}'
+  distractor:
+    3:
+      - 'The answer is {kitchen,office,washrooom,~room}'

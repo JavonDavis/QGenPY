@@ -1,6 +1,6 @@
 import yaml
 import random
-# import moodle_xml_builder as mxb
+import moodle_xml_builder as mxb
 
 
 class Polynomial():
@@ -80,6 +80,7 @@ class Question(object):
     def __init__(self, data, question_count=0):
         self.question_params = {}
         self.title = data['title']
+        self.type = data['type']
         self.body = data['body']
         self.question_count = question_count
         self.answers = data['answer']
@@ -106,7 +107,8 @@ class Question(object):
         print self.body.format(**params)
         print "********Options*********"
 
-        # mxb.build_xml_for_moodle(self.title, self.body, self)
+        body_for_xml = self.body.format(**params)
+        mxb.build_question_for_xml(self.title, body_for_xml, self.type)
 
         for answer in self.answers:
             while "$" in answer:
@@ -117,6 +119,7 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 answer = answer.replace(substr, str(eval(eval_block)))
+            mxb.build_answer_for_xml(answer)
             print answer
         for distractor in self.distractors:
             while "$" in distractor:
@@ -127,7 +130,9 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 distractor = distractor.replace(substr, str(eval(eval_block)))
+                mxb.build_answer_for_xml(distractor)
             print distractor
+        mxb.build_question_end_tag()
 
 
 def test():
@@ -144,7 +149,6 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
                 for i in range(0, number_of_questions):
                     question.gen_moodle_xml()
                 print "-----------------------------"
-                # mxb.build_xml_for_moodle("Random Title", "Random", "Random")
             else:
                 print dict_value
         except yaml.YAMLError as exc:

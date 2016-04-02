@@ -146,10 +146,9 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
             if question is not None:
                 question = Question(dict_value[question], number_of_questions)
                 print "--------Question Data--------"
-                mxb.setup()
                 for i in range(0, number_of_questions):
                     question.gen_moodle_xml()
-                mxb.build_quiz_end_tag()
+                # mxb.build_quiz_end_tag()
                 print "-----------------------------"
             else:
                 print dict_value

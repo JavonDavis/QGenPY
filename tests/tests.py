@@ -1,4 +1,4 @@
-from tests.context import qgen
+from qgen import qgen
 
 import unittest
 import os

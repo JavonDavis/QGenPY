@@ -1,6 +1,14 @@
 SimplePolynomial:
   title: 'Simple polynomial question'
   type: 'multichoice'
+  imports:
+    poly_random: 'tests.Polynomial'
+    highest_degree: 'tests.Polynomial'
+    poly_distractor_1: 'tests.PolynomialDistractor'
+    poly_distractor_2: 'tests.PolynomialDistractor'
+    poly_distractor_3: 'tests.PolynomialDistractor'
+    poly_distractor_4: 'tests.PolynomialDistractor'
+    poly_distractor_5: 'tests.PolynomialDistractor'
   params:
     c:
       poly_random:
@@ -14,8 +22,8 @@ SimplePolynomial:
         end: 100
   body: 'What is the highest degree of the following polynomial ? {c}'
   answer:
-    - 'The answer is $highest_degree("{c}")$'
+    - 'The answer is @highest_degree({c})@'
   distractor:
-    - 'The answer is ${a} + {b}$'
-    - 'The answer is ${a} - {b}$'
-    - 'The answer is ${a} * {b}$'
+    - '@poly_distractor_1({c})@'
+    - '@poly_distractor_2({c})@'
+    - '@poly_distractor_3({c})@'

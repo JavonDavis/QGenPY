@@ -1,79 +1,15 @@
 import yaml
 import random
 import moodle_xml_builder as mxb
-
-
-class Polynomial():
-    st = range(0, 149)
-
-    def __init__(self):
-        self.degree = 0
-        self.generate()
-
-    def generate(self):
-        self.degree = random.choice(Polynomial.st)
-        Polynomial.st.pop()
-
-    def __str__(self):
-        return "x^" + str(self.degree)
-
-    def get_degree(self):
-        return self.degree
-
-
-def distractor_1(polynomial):
-    return str(polynomial.get_degree() + 1)
-
-
-def distractor_2(polynomial):
-    return str(polynomial.get_degree() - 1000)
-
-
-def distractor_3(polynomial):
-    return str(polynomial.get_degree() + 100)
-
-
-def distractor_4(polynomial):
-    if polynomial.get_degree != 0:
-        return "0"
-
-
-def distractor_5(polynomial):
-    return "No such thing as a degree"
-
-
-def test_polynomial():
-    poly = Polynomial()
-    print poly
-
-
-def highest_degree(poly):
-    polys = poly.split("+")
-    polys = map(lambda x: x.replace("x^", ""), polys)
-    degrees = map(int, polys)
-    return max(degrees)
-
-
-def poly_random(values):
-    polynomials = []
-    for i in range(0, values['count']):
-        poly1 = Polynomial()
-        poly2 = Polynomial()
-        poly3 = Polynomial()
-        polynomial = str(poly1) + " + " + str(poly2) + " + " + str(poly3)
-        polynomials.append(polynomial)
-    return polynomials
-
+import importlib
 
 # TODO - account for list of strings or other data types
 def rand(values):
     return random.sample(range(values['start'], values['end']), values['count'])
 
-
-functions = {'random': rand, 'poly_random': poly_random}
+functions = {'random': rand}
 
 """Class to model a generate questions"""
-
 
 # TODO - convert to moodle xml
 class Question(object):
@@ -84,18 +20,28 @@ class Question(object):
         self.body = data['body']
         self.question_count = question_count
         self.answers = data['answer']
+        self.imports = data['imports']
+        self.add_imports(data['imports'])
         self.distractors = data['distractor']
         self.build_question_params(data['params'])
 
+    def add_imports(self, imports):
+        if imports is not None:
+            for name, source in imports.iteritems():
+                try:
+                    functions[name] = importlib.import_module(source).__getattribute__(name)
+                except AttributeError:
+                    pass # log it
+
     def build_question_params(self, params):
         list_params = None
-        for k, v in params.iteritems():
-            for key, value in v.iteritems():
-                if value is None:
-                    value = {}
-                value['count'] = self.question_count
-                list_params = functions[key](value)
-            self.question_params[k] = list_params
+        for parameter_name, function_name in params.iteritems():
+            for function_param, arguments in function_name.iteritems():
+                if arguments is None:
+                    arguments = {}
+                arguments['count'] = self.question_count
+                list_params = functions[function_param](arguments)
+            self.question_params[parameter_name] = list_params
 
     def gen_moodle_xml(self):
         params = {}
@@ -119,6 +65,22 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 answer = answer.replace(substr, str(eval(eval_block)))
+            while "@" in answer:
+                start_index = answer.index('@')
+                end_index = answer.index('@', start_index + 1) + 1
+                substr = answer[start_index:end_index]
+
+                eval_block = substr[1:len(substr) - 1]
+                #find function
+                function_name = eval_block[:eval_block.index("(")]
+                #find arguments
+                arguments = eval_block[eval_block.index("(")+1:eval_block.index(")")]
+                arguments = arguments.replace("{", "")
+                arguments = arguments.replace("}", "")
+                arguments = params[arguments] #This doesn't work for multiple arguments
+                #evaluate and replace string
+                answer = answer.replace(substr, str(functions[function_name](arguments)))
+                print answer
             mxb.build_answer_for_xml(answer)
             print answer
         for distractor in self.distractors:
@@ -130,6 +92,24 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 distractor = distractor.replace(substr, str(eval(eval_block)))
+                mxb.build_answer_for_xml(distractor)
+            while "@" in distractor:
+                start_index = distractor.index('@')
+                end_index = distractor.index('@', start_index + 1) + 1
+                substr = distractor[start_index:end_index]
+
+                eval_block = substr[1:len(substr) - 1]
+                eval_block = eval_block.format(**params)
+                eval_block = substr[1:len(substr) - 1]
+                #find function
+                function_name = eval_block[:eval_block.index("(")]
+                #find arguments
+                arguments = eval_block[eval_block.index("(")+1:eval_block.index(")")]
+                arguments = arguments.replace("{", "")
+                arguments = arguments.replace("}", "")
+                arguments = params[arguments] #This doesn't work for multiple arguments
+                #evaluate and replace string
+                distractor = distractor.replace(substr, str(functions[function_name](arguments)))
                 mxb.build_answer_for_xml(distractor)
             print distractor
         mxb.build_question_end_tag()

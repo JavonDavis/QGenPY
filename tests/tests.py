@@ -19,10 +19,10 @@ class TestSuite(unittest.TestCase):
         qgen.build_moodle_xml(TEST_0_YML_PATH, question="SimplePolynomial", number_of_questions=2)
         mxb.build_quiz_end_tag()
 
-    # def test_b_generate_moodle_xml(self):
-    #     mxb.setup()
-    #     qgen.build_moodle_xml(TEST_1_YML_PATH, question="SimpleAddition", number_of_questions=2)
-    #     mxb.build_quiz_end_tag()
+    def test_b_generate_moodle_xml(self):
+        mxb.setup()
+        qgen.build_moodle_xml(TEST_1_YML_PATH, question="SimpleAddition", number_of_questions=2)
+        mxb.build_quiz_end_tag()
 
 if __name__ == '__main__':
     unittest.main()

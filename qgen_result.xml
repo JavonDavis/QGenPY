@@ -9,7 +9,7 @@
 	<question type="multichoice"><name>
 		<text>Simple polynomial question</text>
 		</name><questiontext format="html">
-		<text>What is the highest degree of the following polynomial ? x^100</text>
+		<text>What is the highest degree of the following polynomial ? x^127</text>
 		</questiontext><generalfeedback format="html">
 		<text></text>
 		</generalfeedback>
@@ -30,28 +30,28 @@
 		</incorrectfeedback>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 100</text>
+			<text>The answer is 127</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>101</text>
+			<text>128</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>-900</text>
+			<text>-873</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>200</text>
+			<text>227</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
@@ -62,7 +62,7 @@
 	<question type="multichoice"><name>
 		<text>Simple polynomial question</text>
 		</name><questiontext format="html">
-		<text>What is the highest degree of the following polynomial ? x^3</text>
+		<text>What is the highest degree of the following polynomial ? x^122</text>
 		</questiontext><generalfeedback format="html">
 		<text></text>
 		</generalfeedback>
@@ -83,28 +83,28 @@
 		</incorrectfeedback>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 3</text>
+			<text>The answer is 122</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>4</text>
+			<text>123</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>-997</text>
+			<text>-878</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>103</text>
+			<text>222</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>

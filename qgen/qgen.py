@@ -20,13 +20,13 @@ class Question(object):
         self.body = data['body']
         self.question_count = question_count
         self.answers = data['answer']
-        self.imports = data['imports']
-        self.add_imports(data['imports'])
+        self.add_imports(data)
         self.distractors = data['distractor']
         self.build_question_params(data['params'])
 
-    def add_imports(self, imports):
-        if imports is not None:
+    def add_imports(self, data):
+        if 'imports' in data:
+            imports = data['imports']
             for name, source in imports.iteritems():
                 try:
                     functions[name] = importlib.import_module(source).__getattribute__(name)

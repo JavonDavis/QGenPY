@@ -17,5 +17,5 @@ setup(
     author_email='javonldavis14@gmail.com, howarde.jr@hotmail.com, alexj.nich@hotmail.com',
     url='',  # TODO - add repository url
     license=license,
-    packages=find_packages(exclude=('nosetests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs'))
 )

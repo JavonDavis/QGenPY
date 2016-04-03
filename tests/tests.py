@@ -1,11 +1,11 @@
-from nosetests.context import qgen
+from tests.context import qgen
 
 import unittest
 import os
 import qgen.moodle_xml_builder as mxb
 
-TEST_0_YML_PATH = os.getcwd() + "/nosetests/test0.yml"
-TEST_1_YML_PATH = os.getcwd() + "/nosetests/test1.yml"
+TEST_0_YML_PATH = os.getcwd() + "/tests/test0.yml"
+TEST_1_YML_PATH = os.getcwd() + "/tests/test1.yml"
 
 class TestSuite(unittest.TestCase):
     """ test cases."""

@@ -2,5 +2,5 @@ init:
 	pip install -r requirements.txt
 
 test:
-	nosetests tests
+	python -m unittest discover -p '*tests.py' -v
 

@@ -10,10 +10,6 @@ SimpleAddition:
       random:
         start: 0
         end: 100
-    c:
-      set: cat,mouse,bird,fish,mothers
-    d:
-      set: [yes, no], c
   body: '#What is the sum of the following?
   {a} + {b}'
   answer:

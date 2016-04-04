@@ -1,5 +1,6 @@
 import random
 
+
 class Polynomial():
     st = range(0, 149)
 
@@ -17,14 +18,20 @@ class Polynomial():
     def get_degree(self):
         return self.degree
 
+
 def poly_random(values):
     polynomials = []
     for i in range(0, values['count']):
-        polynomial = Polynomial()
+        poly1 = Polynomial()
+        poly2 = Polynomial()
+        poly3 = Polynomial()
+        polynomial = str(poly1) + " + " + str(poly2) + " + " + str(poly3)
         polynomials.append(polynomial)
     return polynomials
 
-def highest_degree(polynomials):
-    # degrees = [polynomial.get_degree() for polynomial in polynomials]
-    # return max(degrees)
-    return polynomials.get_degree()
+
+def highest_degree(poly):
+    polys = poly.split("+")
+    polys = map(lambda x: x.replace("x^", ""), polys)
+    degrees = map(int, polys)
+    return max(degrees)

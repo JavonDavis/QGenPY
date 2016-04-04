@@ -2,13 +2,8 @@ SimplePolynomial:
   title: 'Simple polynomial question'
   type: 'multichoice'
   imports:
-    poly_random: 'tests.Polynomial'
-    highest_degree: 'tests.Polynomial'
-    poly_distractor_1: 'tests.PolynomialDistractor'
-    poly_distractor_2: 'tests.PolynomialDistractor'
-    poly_distractor_3: 'tests.PolynomialDistractor'
-    poly_distractor_4: 'tests.PolynomialDistractor'
-    poly_distractor_5: 'tests.PolynomialDistractor'
+    - 'Polynomial'
+    - 'PolynomialDistractor'
   params:
     c:
       poly_random:
@@ -24,6 +19,7 @@ SimplePolynomial:
   answer:
     - 'The answer is @highest_degree({c})@'
   distractor:
-    - '@poly_distractor_1({c})@'
-    - '@poly_distractor_2({c})@'
-    - '@poly_distractor_3({c})@'
+    - 'The answer is @poly_distractor_1({c})@'
+    - 'The answer is @poly_distractor_2({c})@'
+    - 'The answer is @poly_distractor_3({c})@'
+    - 'The answer is @poly_distractor_4({c})@'

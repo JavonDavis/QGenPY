@@ -9,7 +9,7 @@
 	<question type="multichoice"><name>
 		<text>Simple polynomial question</text>
 		</name><questiontext format="html">
-		<text>What is the highest degree of the following polynomial ? x^127</text>
+		<text>What is the highest degree of the following polynomial ? x^104 + x^126 + x^19</text>
 		</questiontext><generalfeedback format="html">
 		<text></text>
 		</generalfeedback>
@@ -30,6 +30,13 @@
 		</incorrectfeedback>
 
 		<answer fraction="0" format="moodle_auto_format">
+			<text>The answer is 126</text>
+			<feedback format="html">
+				<text></text>
+			</feedback>
+		</answer>
+
+		<answer fraction="0" format="moodle_auto_format">
 			<text>The answer is 127</text>
 			<feedback format="html">
 				<text></text>
@@ -37,21 +44,21 @@
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>128</text>
+			<text>The answer is -874</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>-873</text>
+			<text>The answer is 226</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>227</text>
+			<text>The answer is 63</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
@@ -62,7 +69,7 @@
 	<question type="multichoice"><name>
 		<text>Simple polynomial question</text>
 		</name><questiontext format="html">
-		<text>What is the highest degree of the following polynomial ? x^122</text>
+		<text>What is the highest degree of the following polynomial ? x^118 + x^56 + x^122</text>
 		</questiontext><generalfeedback format="html">
 		<text></text>
 		</generalfeedback>
@@ -90,21 +97,28 @@
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>123</text>
+			<text>The answer is 123</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>-878</text>
+			<text>The answer is -878</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>222</text>
+			<text>The answer is 222</text>
+			<feedback format="html">
+				<text></text>
+			</feedback>
+		</answer>
+
+		<answer fraction="0" format="moodle_auto_format">
+			<text>The answer is 61</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>

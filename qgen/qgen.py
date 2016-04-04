@@ -1,15 +1,18 @@
 import yaml
 import random
 import moodle_xml_builder as mxb
-import importlib
+from importlib import import_module
+
 
 # TODO - account for list of strings or other data types
 def rand(values):
     return random.sample(range(values['start'], values['end']), values['count'])
 
+
 functions = {'random': rand}
 
 """Class to model a generate questions"""
+
 
 # TODO - convert to moodle xml
 class Question(object):
@@ -24,14 +27,18 @@ class Question(object):
         self.distractors = data['distractor']
         self.build_question_params(data['params'])
 
-    def add_imports(self, data):
+    @staticmethod
+    def add_imports(data):
         if 'imports' in data:
             imports = data['imports']
-            for name, source in imports.iteritems():
+            for source in imports:
                 try:
-                    functions[name] = importlib.import_module(source).__getattribute__(name)
-                except AttributeError:
-                    pass # log it
+                    module = import_module(source)
+                    for name, value in module.__dict__.iteritems():  # iterate through the module's attributes
+                        if callable(value):  # check if callable for functions
+                            functions[name] = value
+                except AttributeError as e:
+                    print e
 
     def build_question_params(self, params):
         list_params = None
@@ -43,6 +50,7 @@ class Question(object):
                 list_params = functions[function_param](arguments)
             self.question_params[parameter_name] = list_params
 
+    """Function to generate the questions in Moodle XML format"""
     def gen_moodle_xml(self):
         params = {}
         for key, value in self.question_params.iteritems():
@@ -71,14 +79,17 @@ class Question(object):
                 substr = answer[start_index:end_index]
 
                 eval_block = substr[1:len(substr) - 1]
-                #find function
+                # find function
                 function_name = eval_block[:eval_block.index("(")]
-                #find arguments
-                arguments = eval_block[eval_block.index("(")+1:eval_block.index(")")]
+                # find arguments
+                arguments = eval_block[eval_block.index("(") + 1:eval_block.index(")")]
                 arguments = arguments.replace("{", "")
                 arguments = arguments.replace("}", "")
-                arguments = params[arguments] #This doesn't work for multiple arguments
-                #evaluate and replace string
+                arguments = params[arguments]  # This doesn't work for multiple arguments
+                # evaluate and replace string
+                eval_block = eval_block.format(**params)
+
+                result = str(eval(eval_block))
                 answer = answer.replace(substr, str(functions[function_name](arguments)))
                 print answer
             mxb.build_answer_for_xml(answer)
@@ -101,14 +112,14 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 eval_block = substr[1:len(substr) - 1]
-                #find function
+                # find function
                 function_name = eval_block[:eval_block.index("(")]
-                #find arguments
-                arguments = eval_block[eval_block.index("(")+1:eval_block.index(")")]
+                # find arguments
+                arguments = eval_block[eval_block.index("(") + 1:eval_block.index(")")]
                 arguments = arguments.replace("{", "")
                 arguments = arguments.replace("}", "")
-                arguments = params[arguments] #This doesn't work for multiple arguments
-                #evaluate and replace string
+                arguments = params[arguments]  # This doesn't work for multiple arguments
+                # evaluate and replace string
                 distractor = distractor.replace(substr, str(functions[function_name](arguments)))
                 mxb.build_answer_for_xml(distractor)
             print distractor

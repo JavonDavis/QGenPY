@@ -39,13 +39,29 @@ def build_question_for_xml(title=None, text=None, type=None):
     output_file.close()
 
 
-def build_answer_for_xml(text):
+def build_answer_for_xml(text, correct_feedback=None):
+    if correct_feedback == None:
+        correct_feedback = ''
     result = "\n\t\t<answer fraction=\"0\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
              "</text>\n" \
              "\t\t\t<feedback format=\"html\">\n" \
-             "\t\t\t\t<text></text>\n" \
-             "\t\t\t</feedback>\n" \
-             "\t\t</answer>\n"
+             "\t\t\t\t<text>" + correct_feedback + "</text>\n" \
+                                                   "\t\t\t</feedback>\n" \
+                                                   "\t\t</answer>\n"
+    output_file = open("qgen_result.xml", "a+")
+    output_file.write(result)
+    output_file.close()
+
+
+def build_distractor_for_xml(text, incorrect_feedback=None):
+    if incorrect_feedback == None:
+        incorrect_feedback = ''
+    result = "\n\t\t<answer fraction=\"0\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
+             "</text>\n" \
+             "\t\t\t<feedback format=\"html\">\n" \
+             "\t\t\t\t<text>" + incorrect_feedback + "</text>\n" \
+                                                     "\t\t\t</feedback>\n" \
+                                                     "\t\t</answer>\n"
     output_file = open("qgen_result.xml", "a+")
     output_file.write(result)
     output_file.close()

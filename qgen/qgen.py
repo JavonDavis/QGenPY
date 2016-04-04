@@ -85,6 +85,8 @@ class Question(object):
         self.question_count = question_count
         self.answers = data['answer']
         self.distractors = data['distractor']
+        self.correct_feedback = data['correct_feedback']
+        self.incorrect_feedback = data['incorrect_feedback']
         self.build_question_params(data['params'])
 
     def build_question_params(self, params):
@@ -119,7 +121,7 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 answer = answer.replace(substr, str(eval(eval_block)))
-            mxb.build_answer_for_xml(answer)
+            mxb.build_answer_for_xml(answer, self.correct_feedback)
             print answer
         for distractor in self.distractors:
             while "$" in distractor:
@@ -130,7 +132,8 @@ class Question(object):
                 eval_block = substr[1:len(substr) - 1]
                 eval_block = eval_block.format(**params)
                 distractor = distractor.replace(substr, str(eval(eval_block)))
-                mxb.build_answer_for_xml(distractor)
+            # TODO: Evaluate incorrect block if it contains any
+            mxb.build_distractor_for_xml(distractor, self.incorrect_feedback)
             print distractor
         mxb.build_question_end_tag()
 

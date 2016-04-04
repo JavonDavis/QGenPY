@@ -7,9 +7,9 @@
 	</question>
 
 	<question type="multichoice"><name>
-		<text>Simple addition question</text>
+		<text>Simple polynomial question</text>
 		</name><questiontext format="html">
-		<text>#What is the sum of the following? 27 + 68</text>
+		<text>What is the highest degree of the following polynomial ? x^31 + x^108 + x^137</text>
 		</questiontext><generalfeedback format="html">
 		<text></text>
 		</generalfeedback>
@@ -30,28 +30,35 @@
 		</incorrectfeedback>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 95 not -41</text>
+			<text>The answer is 137</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 0</text>
+			<text>The answer is 138</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is -41</text>
+			<text>The answer is -863</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 1836</text>
+			<text>The answer is 237</text>
+			<feedback format="html">
+				<text></text>
+			</feedback>
+		</answer>
+
+		<answer fraction="0" format="moodle_auto_format">
+			<text>The answer is 68</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
@@ -60,9 +67,9 @@
 
 
 	<question type="multichoice"><name>
-		<text>Simple addition question</text>
+		<text>Simple polynomial question</text>
 		</name><questiontext format="html">
-		<text>#What is the sum of the following? 44 + 45</text>
+		<text>What is the highest degree of the following polynomial ? x^99 + x^128 + x^54</text>
 		</questiontext><generalfeedback format="html">
 		<text></text>
 		</generalfeedback>
@@ -83,28 +90,35 @@
 		</incorrectfeedback>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 89 not -1</text>
+			<text>The answer is 128</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 0</text>
+			<text>The answer is 129</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is -1</text>
+			<text>The answer is -872</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>
 		</answer>
 
 		<answer fraction="0" format="moodle_auto_format">
-			<text>The answer is 1980</text>
+			<text>The answer is 228</text>
+			<feedback format="html">
+				<text></text>
+			</feedback>
+		</answer>
+
+		<answer fraction="0" format="moodle_auto_format">
+			<text>The answer is 64</text>
 			<feedback format="html">
 				<text></text>
 			</feedback>

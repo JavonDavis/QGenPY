@@ -9,7 +9,7 @@ SimplePolynomial:
       poly_random:
   body: 'What is the highest degree of the following polynomial ? {polynomial}'
   answer:
-    - 'The answer is @highest_degree({c})@'
+    - 'The answer is @highest_degree@'
   distractor:
     - 'The answer is @poly_distractor_1@'
     - 'The answer is @poly_distractor_2@'

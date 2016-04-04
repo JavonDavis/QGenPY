@@ -20,6 +20,8 @@ def gen_moodle_xml(question):
 
     # Evaluate answers
     for answer in question.answers:
+        original_params = question.params_cache
+        answer = evaluate_braces(answer,params, original_params)
         answer = evaluate_functions(answer, params)
         answer = evaluate_blocks(answer, params)
         mxb.build_answer_for_xml(answer)
@@ -27,6 +29,8 @@ def gen_moodle_xml(question):
 
     # Evaluate distractors
     for distractor in question.distractors:
+        original_params = question.params_cache
+        distractor = evaluate_braces(distractor,params, original_params)
         distractor = evaluate_functions(distractor, params)
         distractor = evaluate_blocks(distractor, params)
         mxb.build_answer_for_xml(distractor)

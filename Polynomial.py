@@ -30,7 +30,8 @@ def poly_random(values):
     return polynomials
 
 
-def highest_degree(poly):
+def highest_degree(polynomial):
+    poly = polynomial['polynomial']
     polys = poly.split("+")
     polys = map(lambda x: x.replace("x^", ""), polys)
     degrees = map(int, polys)

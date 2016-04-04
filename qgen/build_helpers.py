@@ -1,4 +1,5 @@
 from qgen import functions
+import random
 
 """Helper functions that are essential to the construction of questions"""
 
@@ -30,17 +31,49 @@ def evaluate_functions(text, params):
 
         eval_block = substr[1:len(substr) - 1]
         # find function
-        function_name = eval_block[:eval_block.index("(")]
-        # find arguments
+        function_name = eval_block
 
         text = text.replace(substr, str(functions[function_name](params)))
     return text
 
 
-def evaulate_braces(text,params):
+def evaluate_braces(text, params, params_cache):
+    """Evaluates variables enclosed in braces"""
     while "[" in text:
         start_index = text.index('[')
-        end_index = text.index(']',start_index + 1) + 1
+        end_index = text.index(']', start_index + 1) + 1
         substr = text[start_index:end_index]
 
-        choices = substr.split(",")
+        eval_block = substr[1:len(substr) - 1]
+
+        choices = eval_block.split(",")
+        variables = []
+        unwanted = []
+
+        for choice in choices:
+            choice = choice.strip()
+            if choice == "all":
+                for var in params_cache:
+                    if len(params_cache[var]) > 0:
+                        variables.append(var.strip())
+            elif choice[0] == '~':
+                var = choice[1:]
+                if var in params:
+                    unwanted.append(params[var].strip())
+                else:
+                    unwanted.append(choice)
+            elif choice in params:
+                result = params[params[choice].strip()].pop()
+                text = text.replace(substr, str(result))
+                return text
+            else:
+                if len(params_cache[choice]) > 0:
+                    variables.append(choice)
+            for var in unwanted:
+                if var in variables:
+                    variables.remove(var)
+
+        index = random.randint(0, len(variables)-1)
+        result = params_cache[variables[index]].pop()
+        text = text.replace(substr, str(result))
+    return text

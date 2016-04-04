@@ -16,6 +16,7 @@ class Question(object):
         self.add_imports(data)
         self.distractors = data['distractor']
         self.build_question_params(data['params'])
+        self.params_cache = self.question_params
 
     @staticmethod
     def add_imports(data):
@@ -45,7 +46,6 @@ class Question(object):
                     function_arguments = arguments
                 function_arguments['count'] = self.question_count
                 list_params = functions[function_param](function_arguments)
-                print "here"
             self.question_params[parameter_name] = list_params
 
 

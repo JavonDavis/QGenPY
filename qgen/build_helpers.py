@@ -62,8 +62,8 @@ def evaluate_braces(text, params, params_cache):
                     unwanted.append(params[var].strip())
                 else:
                     unwanted.append(choice)
-            elif choice in params:
-                result = params[params[choice].strip()].pop()
+            elif choice in params and params[choice].strip() in params:
+                result = params[params[choice].strip()]
                 text = text.replace(substr, str(result))
                 return text
             else:

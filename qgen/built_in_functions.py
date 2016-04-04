@@ -8,4 +8,8 @@ def rand(values):
     return random.sample(range(values['start'], values['end']), values['count'])
 
 
-built_in_functions = {'random': rand}
+def make_set(values):
+    return values['value'].split(",")
+
+
+built_in_functions = {'random': rand, 'set': make_set}

@@ -21,14 +21,14 @@ def gen_moodle_xml(question):
     # Evaluate answers
     for answer in question.answers:
         answer = evaluate_functions(answer, params)
-        answer = evaluate_code_blocks(answer, params)
+        answer = evaluate_blocks(answer, params)
         mxb.build_answer_for_xml(answer)
         print answer
 
     # Evaluate distractors
     for distractor in question.distractors:
         distractor = evaluate_functions(distractor, params)
-        distractor = evaluate_code_blocks(distractor, params)
+        distractor = evaluate_blocks(distractor, params)
         mxb.build_answer_for_xml(distractor)
         print distractor
     mxb.build_question_end_tag()

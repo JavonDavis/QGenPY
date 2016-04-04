@@ -36,10 +36,16 @@ class Question(object):
         list_params = None
         for parameter_name, function_name in params.iteritems():
             for function_param, arguments in function_name.iteritems():
+                function_arguments = {}
                 if arguments is None:
-                    arguments = {}
-                arguments['count'] = self.question_count
-                list_params = functions[function_param](arguments)
+                    function_arguments = {}
+                elif type(arguments) != dict:
+                    function_arguments['value'] = arguments
+                else:
+                    function_arguments = arguments
+                function_arguments['count'] = self.question_count
+                list_params = functions[function_param](function_arguments)
+                print "here"
             self.question_params[parameter_name] = list_params
 
 

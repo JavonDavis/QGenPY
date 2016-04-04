@@ -1,0 +1,17 @@
+SimplePolynomial:
+  title: 'Simple polynomial question'
+  type: 'multichoice'
+  imports:
+    - 'Polynomial'
+    - 'PolynomialDistractor'
+  params:
+    polynomial:
+      poly_random:
+  body: 'What is the highest degree of the following polynomial ? {polynomial}'
+  answer:
+    - 'The answer is @highest_degree({c})@'
+  distractor:
+    - 'The answer is @poly_distractor_1@'
+    - 'The answer is @poly_distractor_2@'
+    - 'The answer is @poly_distractor_3@'
+    - 'The answer is @poly_distractor_4@'

@@ -63,4 +63,4 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
-/qgen_result.xml
+/generated_quizzes

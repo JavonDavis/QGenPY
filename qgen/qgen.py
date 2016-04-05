@@ -1,82 +1,11 @@
 import yaml
-import random
-import moodle_xml_builder as mxb
-
-
-class Polynomial():
-    st = range(0, 149)
-
-    def __init__(self):
-        self.degree = 0
-        self.generate()
-
-    def generate(self):
-        self.degree = random.choice(Polynomial.st)
-        Polynomial.st.pop()
-
-    def __str__(self):
-        return "x^" + str(self.degree)
-
-    def get_degree(self):
-        return self.degree
-
-
-def distractor_1(polynomial):
-    return str(polynomial.get_degree() + 1)
-
-
-def distractor_2(polynomial):
-    return str(polynomial.get_degree() - 1000)
-
-
-def distractor_3(polynomial):
-    return str(polynomial.get_degree() + 100)
-
-
-def distractor_4(polynomial):
-    if polynomial.get_degree != 0:
-        return "0"
-
-
-def distractor_5(polynomial):
-    return "No such thing as a degree"
-
-
-def test_polynomial():
-    poly = Polynomial()
-    print poly
-
-
-def highest_degree(poly):
-    polys = poly.split("+")
-    polys = map(lambda x: x.replace("x^", ""), polys)
-    degrees = map(int, polys)
-    return max(degrees)
-
-
-def poly_random(values):
-    polynomials = []
-    for i in range(0, values['count']):
-        poly1 = Polynomial()
-        poly2 = Polynomial()
-        poly3 = Polynomial()
-        polynomial = str(poly1) + " + " + str(poly2) + " + " + str(poly3)
-        polynomials.append(polynomial)
-    return polynomials
-
-
-# TODO - account for list of strings or other data types
-def rand(values):
-    return random.sample(range(values['start'], values['end']), values['count'])
-
-
-functions = {'random': rand, 'poly_random': poly_random}
-
-"""Class to model a generate questions"""
+from importlib import import_module
+from built_in_functions import built_in_functions as functions
 
 
 # TODO - convert to moodle xml
 class Question(object):
+    """Class to model a generate questions"""
     def __init__(self, data, question_count=0):
         self.question_params = {}
         self.title = data['title']
@@ -84,58 +13,40 @@ class Question(object):
         self.body = data['body']
         self.question_count = question_count
         self.answers = data['answer']
+        self.add_imports(data)
         self.distractors = data['distractor']
-        self.correct_feedback = data['correct_feedback']
-        self.incorrect_feedback = data['incorrect_feedback']
         self.build_question_params(data['params'])
+        self.params_cache = self.question_params
+
+    @staticmethod
+    def add_imports(data):
+        """Imports any external functions specified"""
+        if 'imports' in data:
+            imports = data['imports']
+            for source in imports:
+                try:
+                    module = import_module(source)
+                    for name, value in module.__dict__.iteritems():  # iterate through the module's attributes
+                        if callable(value):  # check if callable for functions
+                            functions[name] = value
+                except AttributeError as e:
+                    print e
 
     def build_question_params(self, params):
+        """Binds the parameters to there actual values"""
         list_params = None
-        for k, v in params.iteritems():
-            for key, value in v.iteritems():
-                if value is None:
-                    value = {}
-                value['count'] = self.question_count
-                list_params = functions[key](value)
-            self.question_params[k] = list_params
-
-    def gen_moodle_xml(self):
-        params = {}
-        for key, value in self.question_params.iteritems():
-            try:
-                params[key] = value.pop()
-            except IndexError as e:
-                print e
-        print self.body.format(**params)
-        print "********Options*********"
-
-        body_for_xml = self.body.format(**params)
-        mxb.build_question_for_xml(self.title, body_for_xml, self.type)
-
-        for answer in self.answers:
-            while "$" in answer:
-                start_index = answer.index('$')
-                end_index = answer.index('$', start_index + 1) + 1
-                substr = answer[start_index:end_index]
-
-                eval_block = substr[1:len(substr) - 1]
-                eval_block = eval_block.format(**params)
-                answer = answer.replace(substr, str(eval(eval_block)))
-            mxb.build_answer_for_xml(answer, self.correct_feedback)
-            print answer
-        for distractor in self.distractors:
-            while "$" in distractor:
-                start_index = distractor.index('$')
-                end_index = distractor.index('$', start_index + 1) + 1
-                substr = distractor[start_index:end_index]
-
-                eval_block = substr[1:len(substr) - 1]
-                eval_block = eval_block.format(**params)
-                distractor = distractor.replace(substr, str(eval(eval_block)))
-            # TODO: Evaluate incorrect block if it contains any
-            mxb.build_distractor_for_xml(distractor, self.incorrect_feedback)
-            print distractor
-        mxb.build_question_end_tag()
+        for parameter_name, function_name in params.iteritems():
+            for function_param, arguments in function_name.iteritems():
+                function_arguments = {}
+                if arguments is None:
+                    function_arguments = {}
+                elif type(arguments) != dict:
+                    function_arguments['value'] = arguments
+                else:
+                    function_arguments = arguments
+                function_arguments['count'] = self.question_count
+                list_params = functions[function_param](function_arguments)
+            self.question_params[parameter_name] = list_params
 
 
 def test():
@@ -143,6 +54,7 @@ def test():
 
 
 def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
+    from generators.generate_moodle_xml import gen_moodle_xml
     with open(yml_file, 'r') as stream:
         try:
             dict_value = yaml.load(stream)
@@ -150,7 +62,7 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
                 question = Question(dict_value[question], number_of_questions)
                 print "--------Question Data--------"
                 for i in range(0, number_of_questions):
-                    question.gen_moodle_xml()
+                    gen_moodle_xml(question)
                 print "-----------------------------"
             else:
                 print dict_value

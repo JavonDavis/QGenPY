@@ -16,7 +16,6 @@ SimpleSets:
   body: '#Which item would you find in the following room?
   {room}'
   answer:
-    - 'The answer is ${room}'
+    - 'The answer is [room]'
   distractor:
-    3:
-      - 'The answer is {kitchen,office,washrooom,~room}'
+    - 'The answer is [bathroom,kitchen,office,washroom,~room]'

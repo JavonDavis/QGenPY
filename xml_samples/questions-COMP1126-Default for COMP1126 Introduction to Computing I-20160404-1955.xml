@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I</text>
+
+    </category>
+  </question>
+
+<!-- question: 20220  -->
+  <question type="multichoice">
+    <name>
+      <text>foo_recursion</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is the result of running foo(5)?<br />
+ <code><pre> def foo(x):<br />
+        print foo_helper(0, 1, x)<br />
+<br />
+def foo_helper(p, q, r):<br />
+        if(q > r):<br />
+                return 0<br />
+        else:<br />
+                return p + foo_helper(q, q+1, r) </pre></code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>10 gets printed </text>
+      <feedback format="html">
+        <text>Correct</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>7 gets returned after computing</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>0 gets printed</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Not a valid function</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>keeps adding 1 until the computer runs out of memory</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I/map, filter, stacks and queues</text>
+
+    </category>
+  </question>
+
+<!-- question: 20243  -->
+  <question type="multichoice">
+    <name>
+      <text>HOFs</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Use a higher order function to create an equivalent expression of the function below:<br />
+ <code> def list_double (lst):<br />
+&nbsp&nbsp	if lst ==[]:<br />
+&nbsp&nbsp&nbsp&nbsp		return []<br />
+&nbsp&nbsp	else:<br />
+&nbsp&nbsp&nbsp&nbsp		return [(lst[0] * 2)] + list_double(lst[1:]) </code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>map (lst[0]*2, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[map(lambda x:x*2, filter (lambda x:x>1, lst))]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>filter(lambda x:x*2, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>map (lambda x:x*2, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I</text>
+
+    </category>
+  </question>
+
+<!-- question: 20223  -->
+  <question type="multichoice">
+    <name>
+      <text>identify-recursive-function1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is the most appropriate name for the function <code>what_am_i(x)</code>?<br />
+ <code><pre> def what_am_i(x):<br />
+    if(x == 0):<br />
+        return True<br />
+    else:<br />
+        return what_am_i_also(x - 1)<br />
+<br />
+def what_am_i_also(x):<br />
+    if(x == 0):<br />
+        return False<br />
+    else:<br />
+        return what_am_i(x -1) </pre></code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[<code>is_even_number(x)</code>]]></text>
+      <feedback format="html">
+        <text>Correct</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>is_odd_number(x)</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>is_prime_number(x)</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>is_multiple_of_2(x)</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Function does not do anything...</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20224  -->
+  <question type="multichoice">
+    <name>
+      <text>identify-recursive-function2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is the most appropriate name for the function <code>what_am_i_also(x)</code>?<br />
+ <code><pre> def what_am_i(x):<br />
+    if(x == 0):<br />
+        return True<br />
+    else:<br />
+        return what_am_i_also(x - 1)<br />
+<br />
+def what_am_i_also(x):<br />
+    if(x == 0):<br />
+        return False<br />
+    else:<br />
+        return what_am_i(x -1) </pre></code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[<code>is_odd_number(x)</code>]]></text>
+      <feedback format="html">
+        <text>Correct</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>is_prime_number</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>is_even_number(x)</code>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>is_a_trick(x)</code>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Function does not do anything...</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20225  -->
+  <question type="multichoice">
+    <name>
+      <text>identify-recursive-function3</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>What does the function <code>foo_fighters </code> do?</p>
+<pre> def foo_fighters(y, x):<br />
+    if(x == 0):<br />
+        return 1<br />
+    else:<br />
+        return y * foo_fighters(y, (x - 1)) </pre>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[Returns <code>y ^ x</code>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[Returns <code>x ^ y</code>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[Returns <code>y ^ (x -1)</code>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Returns 1 for all values of x</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Returns 1 for all values of y</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I/map, filter, stacks and queues</text>
+
+    </category>
+  </question>
+
+<!-- question: 20240  -->
+  <question type="multichoice">
+    <name>
+      <text>list comprehension eqv</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is the equivalent representation of the following list comprehension expression?<br />
+[2*x for x in [3, 17, 11, 9, 7, 2, 19, 17] if x > 10]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[filter(lambda x: (2*x>10), [3, 17, 11, 9, 7, 2, 19, 17]) ]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[filter(lambda x: 2*x, map(lambda x: x>10, [3, 17, 11, 9, 7, 2, 19, 17])) ]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[map(lambda x: 2*x, filter(lambda x: x>10, [3, 17, 11, 9, 7, 2, 19, 17]))]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[map(lambda x: (2*x)>10, [3, 17, 11, 9, 7, 2, 19, 17]) ]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20241  -->
+  <question type="multichoice">
+    <name>
+      <text>list transform</text>
+    </name>
+    <questiontext format="html">
+      <text>Which expression will transform an input lst whose value is [3, 9, 1, 4, 0, 6] to [1, 2, 0, 2, 0, 0]</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>map (lambda x:x%5/2, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>map (lambda x:x/5%2, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>map (lambda x:x%2/5, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>map (lambda x:x%2%5, lst)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20239  -->
+  <question type="multichoice">
+    <name>
+      <text>map result exp</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is the result of this expression? <code>map(lambda x : (x**2) - (x/2), [1,2,3,4,5])<code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>[1, 3, 8, 14, 23]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[0.5, 3.0, 7.5, 14.0, 22.5]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[2, 3, 5, 6, 8]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[1.5, 3.0, 4.5, 6.0, 7.5]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20242  -->
+  <question type="multichoice">
+    <name>
+      <text>map result exp 2</text>
+    </name>
+    <questiontext format="html">
+      <text>What does the following expression return? map (lambda x:x+1, [x-1 for x in [1, 2, 3, 4, 5]])</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[2, 3, 4, 5, 6]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>[1, 2, 3, 4, 5]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[3, 4, 5, 6, 7]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[0, 1, 2, 3, 4]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I</text>
+
+    </category>
+  </question>
+
+<!-- question: 20219  -->
+  <question type="multichoice">
+    <name>
+      <text>mystery_recursion</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>What does the function mystery print?</p>
+<pre> def mystery():<br />
+    x = 5<br />
+    print(mystery_helper(5,3))<br />
+def mystery_helper(p, q):<br />
+    if (q != 0):<br />
+        return p * mystery_helper(p, q - 1)<br />
+    else:<br />
+        return 1 </pre>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>125</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>25</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>0</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>5</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>3</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I/map, filter, stacks and queues</text>
+
+    </category>
+  </question>
+
+<!-- question: 20245  -->
+  <question type="multichoice">
+    <name>
+      <text>Queue mystery</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Using the definition below for a queue,  <code> def makeQueue():<br />
+&nbsp&nbsp	return ('queue', []) </code>	<br />
+<br />
+what operation does the following mystery function implement?<br />
+ <code> def mystery(q):<br />
+&nbsp&nbsp	return ('queue', q[1][1:]) </code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>enqueue</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>dequeue</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>front</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>isQueueEmpty</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20247  -->
+  <question type="multichoice">
+    <name>
+      <text>Queue mystery 2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What does this mystery function do to a queue? <code> def mystery(q):<br />
+&nbsp&nbsp	if isEmptyQueue<br />
+&nbsp&nbsp&nbsp&nbsp		return makeQueue()<br />
+&nbsp&nbsp	else<br />
+&nbsp&nbsp&nbsp&nbsp		enqueue (front, (q, mystery(dequeue(q)) </code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>nothing</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>reverse</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>scramble</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>empty</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I</text>
+
+    </category>
+  </question>
+
+<!-- question: 20226  -->
+  <question type="multichoice">
+    <name>
+      <text>recursion-analysis</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>What is the output of the function <code>merlin</code> when given the parameter 33?</p>
+<pre> def merlin(magic_num):<br />
+    if (magic_num == 100):<br />
+        return 33<br />
+    elif (magic_num &lt; 100):<br />
+        return merlin(magic_num + 1)<br />
+    else:<br />
+        return merlin(magic_num - 1) </pre>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>The function would return 33</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>The function would return 100</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[The computer will terminate the program due to "exceeded stack size"]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>The function is invalid</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Only Merlin knows...</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20227  -->
+  <question type="multichoice">
+    <name>
+      <text>recursion-analysis2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Identify the base case for the function <code>foo_bar</code><code><pre> def foo_bar(num):<br />
+    if(num == 0):<br />
+        return 0<br />
+    elif (num == 1):<br />
+        return 1<br />
+    else:<br />
+        val1 = foo_bar(num - 1)<br />
+        val2 = foo_bar(num - 2)<br />
+        return val1 + val2 </pre></code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[There are multiple base/terminating cases: <br>When <code>(num == 0)</code> and when <code>(num == 1)</code>]]></text>
+      <feedback format="html">
+        <text>Correct</text>
+      </feedback>
+    </answer>
+    <answer fraction="50" format="moodle_auto_format">
+      <text><![CDATA[<code>(num == 0)</code>]]></text>
+      <feedback format="html">
+        <text>Partial marks</text>
+      </feedback>
+    </answer>
+    <answer fraction="50" format="moodle_auto_format">
+      <text><![CDATA[<code>(num == 1)</code>]]></text>
+      <feedback format="html">
+        <text>Partial marks</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Function does not have a base/terminating case.</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[<code>return val1 + val2</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20228  -->
+  <question type="multichoice">
+    <name>
+      <text>recursion-analysis3</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What will happen during the execution of the function <code>recurse</code>?<br />
+ <code><pre> def recurse():<br />
+    recurse() </pre></code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[In most programming environments, a program with inﬁnite recursion does not really run forever.<br />
+Python reports an error message when the maximum recursion depth is reached]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[This is an infinite recursive function and will run until the "maximum recursion depth is reached"]]></text>
+      <feedback format="html">
+        <text>Correct
+</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>This will crash the computer</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>The interpreter will not allow it to run</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[The function will return the memory location of the function <code>recurse()</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Not sure what will happen, these things are unpredictable.</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20221  -->
+  <question type="multichoice">
+    <name>
+      <text>recursion-fix</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>The function <code>new_foo</code> should multiply all numbers between 1 and x. However this function is defined incorrectly what change is necessary to make it work?</p>
+<pre> def new_foo(x):<br />
+    if(x == 1):<br />
+        return 1<br />
+    else:<br />
+        return x - new_foo(x - 1) </pre>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text><![CDATA[Change the line <strong><code>return x - new_foo(x - 1)</code></strong> to <strong><code>return x * new_foo(x - 1)</code></strong>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>The base case should return 0 instead of 1</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[Change the line <strong><code>return x - new_foo(x - 1)</code></strong> to <strong><code>return x + new_foo(x - 1)</code></strong>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>This function cannot be written recursively</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Incorrect</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[Change the line <strong><code>return x - new_foo(x - 1)</code></strong> to <strong><code>return x * new_foo(x - 1)</code></strong> and change the base case to return 0]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20222  -->
+  <question type="multichoice">
+    <name>
+      <text>recursion-fix2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[How could you change this function in order to sum all numbers between <code>0</code> and <code>x</code>?<br />
+ <code><pre> def new_foo(x):<br />
+    if(x == 1):<br />
+        return 1<br />
+    else:<br />
+        return x * new_foo(x - 1) </pre></code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>Change the mulitplication to addition</text>
+      <feedback format="html">
+        <text>Correct</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Change the * to / and  return 0 instead of 1</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Change the mulitplication to addition and return 0 instead of 1</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>Function needs to be totally re-written to achieve the task</text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text><![CDATA[When <code>(x == 0)</code> we should return <code>0</code>]]></text>
+      <feedback format="html">
+        <text>Incorrect</text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/Default for COMP1126: Introduction to Computing I/map, filter, stacks and queues</text>
+
+    </category>
+  </question>
+
+<!-- question: 20248  -->
+  <question type="multichoice">
+    <name>
+      <text>Stack Ops</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is returned from the stack expression below?<br />
+ <code> s1 = makeStack()<br />
+push(s1, 3)<br />
+push(s1, 5)<br />
+s2 = s1<br />
+top(s1) 5<br />
+top(s2) 5<br />
+push(s1, 7)<br />
+top(s2) </code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>7</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>5</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>0</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20244  -->
+  <question type="multichoice">
+    <name>
+      <text>STACK POP</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[How would you access the number 3 using the stack definition below, and stack ADT 'pop' and 'top' functions? <code> s = ('stack', [1, 2, 3, 4, 5])  </code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>top(pop(pop(s)))</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>top(pop(s)(pop(s))</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>pop(pop(top(s)))</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>top(s)(pop(pop(s))</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 20246  -->
+  <question type="multichoice">
+    <name>
+      <text>STACK PUSH</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is returned from the stack expression below? <code> s = makeStack()<br />
+s1 = push(s, 3)<br />
+s2 = push(s1, 5)<br />
+s3 = push(s2, 7)<br />
+top(s2) </code>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>5</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>7</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>[]</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

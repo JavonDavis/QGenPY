@@ -15,6 +15,10 @@ class Question(object):
         self.answers = data['answer']
         self.add_imports(data)
         self.distractors = data['distractor']
+        self.correct_feedback = data['correct_feedback']
+        self.incorrect_feedback = data['incorrect_feedback']
+        self.correct_answer_weight = data['correct_answer_weight']
+        self.incorrect_answer_weight = data['incorrect_answer_weight']
         self.build_question_params(data['params'])
         self.params_cache = self.question_params
 

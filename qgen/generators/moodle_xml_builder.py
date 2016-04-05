@@ -39,10 +39,12 @@ def build_question_for_xml(title=None, text=None, type=None):
     output_file.close()
 
 
-def build_answer_for_xml(text, correct_feedback=None):
+def build_answer_for_xml(text, correct_feedback=None, fractionAmount="100"):
     if correct_feedback == None:
         correct_feedback = ''
-    result = "\n\t\t<answer fraction=\"0\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
+    if fractionAmount == '':
+        fractionAmount = "100"
+    result = "\n\t\t<answer fraction=\"" + fractionAmount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
              "</text>\n" \
              "\t\t\t<feedback format=\"html\">\n" \
              "\t\t\t\t<text>" + correct_feedback + "</text>\n" \
@@ -53,10 +55,12 @@ def build_answer_for_xml(text, correct_feedback=None):
     output_file.close()
 
 
-def build_distractor_for_xml(text, incorrect_feedback=None):
+def build_distractor_for_xml(text, incorrect_feedback=None, fractionAmount="0"):
     if incorrect_feedback == None:
         incorrect_feedback = ''
-    result = "\n\t\t<answer fraction=\"0\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
+        if fractionAmount == '':
+            fractionAmount = "0"
+    result = "\n\t\t<answer fraction=\"" + fractionAmount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
              "</text>\n" \
              "\t\t\t<feedback format=\"html\">\n" \
              "\t\t\t\t<text>" + incorrect_feedback + "</text>\n" \

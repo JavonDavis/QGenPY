@@ -17,23 +17,28 @@ TEST_SETS_YML_PATH = os.getcwd() + "/tests/test_sets.yml"
 class TestSuite(unittest.TestCase):
     """ test cases."""
 
-    def test_a_hello_world(self):
+    # only one setup call
+    mxb.setup()
+
+    # have to keep tests in one block
+    def tests(self):
+        # test_a_hello_world
         qgen.test()
 
-    def test_b_imports(self):
+        # test_b_imports
         built_in_size = len(built_in)
-        mxb.setup()
         qgen.build_moodle_xml(TEST_IMPORTS_YML_PATH, question="SimplePolynomial", number_of_questions=2)
-        mxb.build_quiz_end_tag()
         self.assertGreater(len(qgen.functions), built_in_size, "No functions were imported")
 
-    def test_b_generate_moodle_xml(self):
-        mxb.setup()
+        # test_b_generate_moodle_xml
         qgen.build_moodle_xml(TEST_SIMPLE_YML_PATH, question="SimpleAddition", number_of_questions=2)
+
+        # test_a_sets
+        qgen.build_moodle_xml(TEST_SETS_YML_PATH, question="SimpleSets", number_of_questions=2)
+
+        # only one end tag call
         mxb.build_quiz_end_tag()
 
-    def test_a_sets(self):
-        qgen.build_moodle_xml(TEST_SETS_YML_PATH, question="SimpleSets", number_of_questions=2)
 
 if __name__ == '__main__':
     unittest.main()

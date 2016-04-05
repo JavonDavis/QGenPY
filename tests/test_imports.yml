@@ -11,7 +11,7 @@ SimplePolynomial:
   params:
     polynomial:
       poly_random:
-  body: 'What is the highest degree of the following polynomial ? {polynomial}'
+  body: '#What is the highest degree of the following polynomial ? {polynomial}'
   answer:
     - 'The answer is @highest_degree@'
   distractor:

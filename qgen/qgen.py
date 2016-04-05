@@ -1,20 +1,28 @@
 import yaml
 from importlib import import_module
 from built_in_functions import built_in_functions as functions
+import markdown2
 
 
 # TODO - convert to moodle xml
 class Question(object):
+
+    body_container = "<![CDATA[%s]]"
+
     """Class to model a generate questions"""
     def __init__(self, data, question_count=0):
         self.question_params = {}
         self.title = data['title']
         self.type = data['type']
-        self.body = data['body']
+        self.body = Question.body_container % markdown2.markdown(data['body'])
         self.question_count = question_count
         self.answers = data['answer']
         self.add_imports(data)
         self.distractors = data['distractor']
+        self.correct_feedback = data['correct_feedback']
+        self.incorrect_feedback = data['incorrect_feedback']
+        self.correct_answer_weight = data['correct_answer_weight']
+        self.incorrect_answer_weight = data['incorrect_answer_weight']
         self.build_question_params(data['params'])
         self.params_cache = self.question_params
 

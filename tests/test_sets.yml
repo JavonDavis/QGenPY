@@ -1,6 +1,10 @@
 SimpleSets:
   title: 'Simple set question'
   type: 'multichoice'
+  correct_feedback: 'Great job, you got the answer right!'
+  incorrect_feedback: 'The answer wasn''t correct'
+  correct_answer_weight: '' #Defaulted to 100
+  incorrect_answer_weight: '' #Defaulted to 0
   params:
     room:
       set: bathroom, office, kitchen, washroom
@@ -14,6 +18,7 @@ SimpleSets:
       set: pan, washing machine, dryer, clothespin
 
   body: '#Which item would you find in the following room?
+
   {room}'
   answer:
     - 'The answer is [room]'

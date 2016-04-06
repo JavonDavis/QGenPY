@@ -18,6 +18,7 @@ SimpleSets:
       set: pan, washing machine, dryer, clothespin
 
   body: '#Which item would you find in the following room?
+
   {room}'
   answer:
     - 'The answer is [room]'

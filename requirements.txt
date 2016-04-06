@@ -1,3 +1,4 @@
 pyyaml
 nose
 sphinx
+markdown2

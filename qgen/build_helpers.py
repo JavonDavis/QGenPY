@@ -14,7 +14,7 @@ def evaluate_blocks(text, params):
         substr = text[start_index:end_index]
 
         # remove leading and trailing $
-        eval_block = substr[1:len(substr) - 1]
+        eval_block = substr[1:-1]
 
         # fill in arguments
         eval_block = eval_block.format(**params)
@@ -29,7 +29,7 @@ def evaluate_functions(text, params):
         end_index = text.index('@', start_index + 1) + 1
         substr = text[start_index:end_index]
 
-        eval_block = substr[1:len(substr) - 1]
+        eval_block = substr[1:-1]
         # find function
         function_name = eval_block
 
@@ -54,7 +54,7 @@ def evaluate_braces(text, params, params_cache):
             choice = choice.strip()
             if choice == "all":
                 for var in params_cache:
-                    if len(params_cache[var]) > 0:
+                    if params_cache[var]:
                         variables.append(var.strip())
             elif choice[0] == '~':
                 var = choice[1:]
@@ -67,7 +67,7 @@ def evaluate_braces(text, params, params_cache):
                 text = text.replace(substr, str(result))
                 return text
             else:
-                if len(params_cache[choice]) > 0:
+                if params_cache[choice]:
                     variables.append(choice)
             for var in unwanted:
                 if var in variables:

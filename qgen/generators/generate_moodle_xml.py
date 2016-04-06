@@ -18,7 +18,6 @@ def gen_moodle_xml(question):
     body_for_xml = question.body.format(**params)
 
     xml_builder = mxb.QuizBuilder(question.title)
-    xml_builder.setup()
     xml_builder.build_question_for_xml(question.title, body_for_xml, question.type)
 
     # Evaluate answers

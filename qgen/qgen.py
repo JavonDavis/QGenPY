@@ -1,6 +1,7 @@
 import yaml
 from importlib import import_module
 from built_in_functions import built_in_functions as functions
+import generators.moodle_xml_builder as mxb
 import markdown2
 
 
@@ -69,6 +70,8 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
             if question is not None:
                 question = Question(dict_value[question], number_of_questions)
                 print "--------Question Data--------"
+                xml_builder = mxb.QuizBuilder(question.title)
+                xml_builder.setup()
                 for i in range(0, number_of_questions):
                     gen_moodle_xml(question)
                 print "-----------------------------"

@@ -22,7 +22,7 @@ class TestSuite(unittest.TestCase):
 
     def test_b_imports(self):
         built_in_size = len(built_in)
-        qgen.build_moodle_xml(TEST_IMPORTS_YML_PATH, question="SimplePolynomial", number_of_questions=2)
+        qgen.build_moodle_xml(TEST_IMPORTS_YML_PATH, question="SimplePolynomial", number_of_questions=5)
         self.assertGreater(len(qgen.functions), built_in_size, "No functions were imported")
 
     def test_b_generate_moodle_xml(self):

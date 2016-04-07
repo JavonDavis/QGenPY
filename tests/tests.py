@@ -5,6 +5,7 @@ import unittest
 import qgen
 import qgen.generators.moodle_xml_builder as mxb
 from qgen.built_in_functions import built_in_functions as built_in
+from qgen.exceptions import InvalidConfigException
 
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.getcwd())
@@ -12,7 +13,7 @@ sys.path.insert(0, os.getcwd())
 TEST_IMPORTS_YML_PATH = os.getcwd() + "/tests/test_imports.yml"
 TEST_SIMPLE_YML_PATH = os.getcwd() + "/tests/test_simple.yml"
 TEST_SETS_YML_PATH = os.getcwd() + "/tests/test_sets.yml"
-
+TEST_BAD_YML_PATH = os.getcwd() + "/tests/test_missing_config.yml"
 
 class TestSuite(unittest.TestCase):
     """ test cases."""
@@ -30,6 +31,10 @@ class TestSuite(unittest.TestCase):
 
     def test_a_sets(self):
         qgen.build_moodle_xml(TEST_SETS_YML_PATH, question="SimpleSets", number_of_questions=2)
+
+    def test_missing_config(self):
+        with self.assertRaises(InvalidConfigException):
+            qgen.build_moodle_xml(TEST_BAD_YML_PATH, question="SimpleAddition", number_of_questions=2)
 
 if __name__ == '__main__':
     unittest.main()

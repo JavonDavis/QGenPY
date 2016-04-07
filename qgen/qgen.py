@@ -1,6 +1,7 @@
 import yaml
 from importlib import import_module
 from built_in_functions import built_in_functions as functions
+from exceptions import InvalidConfigException
 import generators.moodle_xml_builder as mxb
 import markdown2
 
@@ -8,26 +9,40 @@ import markdown2
 # TODO - convert to moodle xml
 class Question(object):
     body_container = "<![CDATA[%s]]"
+    COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']
 
     """Class to model a generate questions"""
 
-    def __init__(self, data, question_count=0):
+    def __init__(self, configuration, question_count=0):
         self.question_params = {}
-        self.title = data['title']
-        self.type = data['type']
+        self.add_config(configuration)
+        self.question_count = question_count
+        self.add_imports(configuration)
         # TODO - do formatting after all data has been filled
         # self.body = Question.body_container % markdown2.markdown(data['body'])
-        self.body = data['body']
-        self.question_count = question_count
-        self.answers = data['answer']
-        self.add_imports(data)
-        self.distractors = data['distractor']
-        self.correct_feedback = data['correct_feedback']
-        self.incorrect_feedback = data['incorrect_feedback']
-        self.correct_answer_weight = data['correct_answer_weight']
-        self.incorrect_answer_weight = data['incorrect_answer_weight']
-        self.build_question_params(data['params'])
+        self.build_question_params(configuration['params'])
         self.params_cache = self.question_params
+
+    def add_config(self, config):
+        if self.check_config(config):
+            self.add_compulsory_config(config)            
+        self.distractors = config['distractor'] if 'distractor' in config else {}
+        self.correct_feedback = config['correct_feedback'] if 'correct_feedback' in config else {}
+        self.incorrect_feedback = config['incorrect_feedback'] if 'incorrect_feedback' in config else {}
+        self.correct_answer_weight = config['correct_answer_weight'] if 'correct_answer_weight' in config else {}
+        self.incorrect_answer_weight = config['incorrect_answer_weight'] if 'incorrect_answer_weight' in config else{}
+
+    def check_config(self, config):
+        for name in Question.COMPULSORY_CONFIGS:            
+            if name not in config:
+                raise InvalidConfigException(name + " is missing from the configuration.")
+        return True
+
+    def add_compulsory_config(self, config):
+        self.type = config['type']
+        self.title = config['title']
+        self.answers = config['answer']
+        self.body = config['body']
 
     @staticmethod
     def add_imports(data):

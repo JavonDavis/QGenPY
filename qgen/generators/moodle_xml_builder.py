@@ -50,12 +50,12 @@ class QuizBuilder(object):
             output_file.write(result)
         output_file.close()
 
-    def build_answer_for_xml(self, text, correct_feedback=None, fractionAmount="100"):
+    def build_answer_for_xml(self, text, correct_feedback=None, fraction_amount="100"):
         if correct_feedback is None:
             correct_feedback = ''
-        if fractionAmount == '':
-            fractionAmount = "100"
-        result = "\n\t\t<answer fraction=\"" + fractionAmount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
+        if fraction_amount == '':
+            fraction_amount = "100"
+        result = "\n\t\t<answer fraction=\"" + fraction_amount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
                  "</text>\n" \
                  "\t\t\t<feedback format=\"html\">\n" \
                  "\t\t\t\t<text>" + correct_feedback + "</text>\n" \
@@ -65,12 +65,12 @@ class QuizBuilder(object):
             output_file.write(result)
         output_file.close()
 
-    def build_distractor_for_xml(self, text, incorrect_feedback=None, fractionAmount="0"):
+    def build_distractor_for_xml(self, text, incorrect_feedback=None, fraction_amount="0"):
         if incorrect_feedback is None:
             incorrect_feedback = ''
-            if fractionAmount == '':
-                fractionAmount = "0"
-        result = "\n\t\t<answer fraction=\"" + fractionAmount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
+            if fraction_amount == '':
+                fraction_amount = "0"
+        result = "\n\t\t<answer fraction=\"" + fraction_amount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
                  "</text>\n" \
                  "\t\t\t<feedback format=\"html\">\n" \
                  "\t\t\t\t<text>" + incorrect_feedback + "</text>\n" \

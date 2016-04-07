@@ -1,20 +1,23 @@
 import yaml
 from importlib import import_module
 from built_in_functions import built_in_functions as functions
+import generators.moodle_xml_builder as mxb
 import markdown2
 
 
 # TODO - convert to moodle xml
 class Question(object):
-
     body_container = "<![CDATA[%s]]"
 
     """Class to model a generate questions"""
+
     def __init__(self, data, question_count=0):
         self.question_params = {}
         self.title = data['title']
         self.type = data['type']
-        self.body = Question.body_container % markdown2.markdown(data['body'])
+        # TODO - do formatting after all data has been filled
+        # self.body = Question.body_container % markdown2.markdown(data['body'])
+        self.body = data['body']
         self.question_count = question_count
         self.answers = data['answer']
         self.add_imports(data)
@@ -61,7 +64,7 @@ def test():
     print "Hello World"
 
 
-def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
+def build_moodle_xml(yml_file=None, question=None, number_of_questions=10):
     from generators.generate_moodle_xml import gen_moodle_xml
     with open(yml_file, 'r') as stream:
         try:
@@ -69,6 +72,8 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=50):
             if question is not None:
                 question = Question(dict_value[question], number_of_questions)
                 print "--------Question Data--------"
+                xml_builder = mxb.QuizBuilder(question.title)
+                xml_builder.setup()
                 for i in range(0, number_of_questions):
                     gen_moodle_xml(question)
                 print "-----------------------------"

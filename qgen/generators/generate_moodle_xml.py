@@ -16,7 +16,9 @@ def gen_moodle_xml(question):
     print "********Options*********"
 
     body_for_xml = question.body.format(**params)
-    mxb.build_question_for_xml(question.title, body_for_xml, question.type)
+
+    xml_builder = mxb.QuizBuilder(question.title)
+    xml_builder.build_question_for_xml(question.title, body_for_xml, question.type)
 
     # Evaluate answers
     for answer in question.answers:
@@ -24,7 +26,7 @@ def gen_moodle_xml(question):
         answer = evaluate_braces(answer, params, original_params)
         answer = evaluate_functions(answer, params)
         answer = evaluate_blocks(answer, params)
-        mxb.build_answer_for_xml(answer, None, question.correct_answer_weight)
+        xml_builder.build_answer_for_xml(answer, None, question.correct_answer_weight)
         print answer
 
     # Evaluate distractors
@@ -33,6 +35,7 @@ def gen_moodle_xml(question):
         distractor = evaluate_braces(distractor, params, original_params)
         distractor = evaluate_functions(distractor, params)
         distractor = evaluate_blocks(distractor, params)
-        mxb.build_distractor_for_xml(distractor, None, question.incorrect_answer_weight)
+        xml_builder.build_distractor_for_xml(distractor, None, question.incorrect_answer_weight)
         print distractor
-    mxb.build_question_end_tag()
+    xml_builder.build_question_end_tag()
+    xml_builder.build_quiz_end_tag()

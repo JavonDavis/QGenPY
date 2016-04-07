@@ -7,6 +7,8 @@ import random
 def evaluate_blocks(text, params):
     """Evaluates the code blocks delimited by a $ in a question's answer or distractor"""
     while "$" in text:
+        if "\$" in text:
+            text = text.replace("\$", "esCA")
         start_index = text.index('$')
         end_index = text.index('$', start_index + 1) + 1
 
@@ -19,6 +21,7 @@ def evaluate_blocks(text, params):
         # fill in arguments
         eval_block = eval_block.format(**params)
         text = text.replace(substr, str(eval(eval_block)))
+    text = text.replace("esCA", "$")
     return text
 
 

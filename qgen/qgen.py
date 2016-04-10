@@ -76,6 +76,7 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=10):
                 xml_builder.setup()
                 for i in range(0, number_of_questions):
                     gen_moodle_xml(question)
+                xml_builder.build_quiz_end_tag()
                 print "-----------------------------"
             else:
                 print dict_value

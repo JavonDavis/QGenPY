@@ -38,4 +38,3 @@ def gen_moodle_xml(question):
         xml_builder.build_distractor_for_xml(distractor, None, question.incorrect_answer_weight)
         print distractor
     xml_builder.build_question_end_tag()
-    xml_builder.build_quiz_end_tag()

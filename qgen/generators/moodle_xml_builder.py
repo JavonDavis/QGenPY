@@ -68,8 +68,8 @@ class QuizBuilder(object):
     def build_distractor_for_xml(self, text, incorrect_feedback=None, fraction_amount="0"):
         if incorrect_feedback is None:
             incorrect_feedback = ''
-            if fraction_amount == '':
-                fraction_amount = "0"
+        if fraction_amount == '':
+            fraction_amount = "0"
         result = "\n\t\t<answer fraction=\"" + fraction_amount + "\" format=\"moodle_auto_format\">\n" + "\t\t\t<text>" + text + \
                  "</text>\n" \
                  "\t\t\t<feedback format=\"html\">\n" \

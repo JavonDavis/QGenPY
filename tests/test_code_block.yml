@@ -1,0 +1,28 @@
+SimpleFoo1:
+  title: 'Simple Foo'
+  type: 'multichoice'
+  imports:
+    - 'Functions'
+  params:
+    param:
+      random:
+        start: 1
+        end: 100
+  body: >
+          # What is result of running foo({param})
+
+
+          ```
+              def foo(x):
+                  print foo_helper(0, 1, x)
+
+              def foo_helper(p,q,r):
+                  if q > r:
+                      return 0
+                  else:
+                      return p + foo_helper(q, q+1, r)
+          ```
+  answer:
+    - '@foo@'
+  distractors:
+    - '@foo_distractor@'

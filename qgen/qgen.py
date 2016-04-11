@@ -21,24 +21,25 @@ class Question(object):
 
     def add_config(self, config):
         if self.check_config(config):
-            self.add_compulsory_config(config)            
-        self.distractors = config['distractor'] if 'distractor' in config else {}
-        self.correct_feedback = config['correct_feedback'] if 'correct_feedback' in config else {}
-        self.incorrect_feedback = config['incorrect_feedback'] if 'incorrect_feedback' in config else {}
-        self.correct_answer_weight = config['correct_answer_weight'] if 'correct_answer_weight' in config else {}
-        self.incorrect_answer_weight = config['incorrect_answer_weight'] if 'incorrect_answer_weight' in config else{}
+            self.add_compulsory_config(config)
+        self.distractors = config['distractors'] if 'distractors' in config else {}
+        self.correct_feedback = config['correct_feedback'] if 'correct_feedback' in config else ""
+        self.incorrect_feedback = config['incorrect_feedback'] if 'incorrect_feedback' in config else ""
+        self.correct_answer_weight = config['correct_answer_weight'] if 'correct_answer_weight' in config else ""
+        self.incorrect_answer_weight = config['incorrect_answer_weight'] if 'incorrect_answer_weight' in config else ""
 
-    def check_config(self, config):
+    @staticmethod
+    def check_config(config):
         for name in Question.COMPULSORY_CONFIGS:            
             if name not in config:
                 raise InvalidConfigException(name + " is missing from the configuration.")
         return True
 
     def add_compulsory_config(self, config):
+        self.body = config['body']
         self.type = config['type']
         self.title = config['title']
         self.answers = config['answer']
-        self.body = config['body']
 
     @staticmethod
     def add_imports(data):

@@ -3,12 +3,10 @@ from importlib import import_module
 from built_in_functions import built_in_functions as functions
 from exceptions import InvalidConfigException
 import generators.moodle_xml_builder as mxb
-import markdown2
 
 
 # TODO - convert to moodle xml
 class Question(object):
-    body_container = "<![CDATA[%s]]"
     COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']
 
     """Class to model a generate questions"""
@@ -18,8 +16,6 @@ class Question(object):
         self.add_config(configuration)
         self.question_count = question_count
         self.add_imports(configuration)
-        # TODO - do formatting after all data has been filled
-        # self.body = Question.body_container % markdown2.markdown(data['body'])
         self.build_question_params(configuration['params'])
         self.params_cache = self.question_params
 

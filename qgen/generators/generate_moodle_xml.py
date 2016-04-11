@@ -39,3 +39,4 @@ def gen_moodle_xml(question):
         print distractor
     xml_builder.build_question_end_tag()
     xml_builder.build_quiz_end_tag()
+    return str(xml_builder)

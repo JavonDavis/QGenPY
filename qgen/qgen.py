@@ -1,11 +1,10 @@
 import yaml
 from importlib import import_module
 from built_in_functions import built_in_functions as functions
-from exceptions import InvalidConfigException
+from qgen_exceptions import InvalidConfigException
 import generators.moodle_xml_builder as mxb
 
 
-# TODO - convert to moodle xml
 class Question(object):
     COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']
 
@@ -13,33 +12,34 @@ class Question(object):
 
     def __init__(self, configuration, question_count=0):
         self.question_params = {}
-        self.add_config(configuration)
+        self.body, self.type, self.title, self.answers, self.distractors, self.correct_feedback, self.incorrect_feedback \
+            , self.correct_answer_weight, self.incorrect_answer_weight = self.add_config(configuration)
         self.question_count = question_count
         self.add_imports(configuration)
-        self.build_question_params(configuration['params'])
+        if 'params' in configuration:
+            self.build_question_params(configuration['params'])
         self.params_cache = self.question_params
 
     def add_config(self, config):
-        if self.check_config(config):
-            self.add_compulsory_config(config)
-        self.distractors = config['distractors'] if 'distractors' in config else {}
-        self.correct_feedback = config['correct_feedback'] if 'correct_feedback' in config else ""
-        self.incorrect_feedback = config['incorrect_feedback'] if 'incorrect_feedback' in config else ""
-        self.correct_answer_weight = config['correct_answer_weight'] if 'correct_answer_weight' in config else ""
-        self.incorrect_answer_weight = config['incorrect_answer_weight'] if 'incorrect_answer_weight' in config else ""
+        body, q_type, title, answer = self.add_compulsory_config(config) if self.check_config(config) else None
+        q_distractor = config['distractor'] if 'distractor' in config else {}
+        q_correct_feedback = config['correct_feedback'] if 'correct_feedback' in config else ""
+        q_incorrect_feedback = config['incorrect_feedback'] if 'incorrect_feedback' in config else ""
+        q_correct_answer_weight = config['correct_answer_weight'] if 'correct_answer_weight' in config else ""
+        q_incorrect_answer_weight = config['incorrect_answer_weight'] if 'incorrect_answer_weight' in config else ""
+        return body, q_type, title, answer, q_distractor, q_correct_feedback \
+            , q_incorrect_feedback, q_correct_answer_weight, q_incorrect_answer_weight
 
     @staticmethod
     def check_config(config):
-        for name in Question.COMPULSORY_CONFIGS:            
+        for name in Question.COMPULSORY_CONFIGS:
             if name not in config:
                 raise InvalidConfigException(name + " is missing from the configuration.")
         return True
 
-    def add_compulsory_config(self, config):
-        self.body = config['body']
-        self.type = config['type']
-        self.title = config['title']
-        self.answers = config['answer']
+    @staticmethod
+    def add_compulsory_config(config):
+        return config['body'], config['type'], config['title'], config['answer']
 
     @staticmethod
     def add_imports(data):

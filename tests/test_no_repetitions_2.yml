@@ -1,0 +1,21 @@
+SimpleRepetition:
+  title: 'Simple addition question to test repeat functionality of QGen 2'
+  type: 'multichoice'
+  params:
+    a:
+      random:
+        start: 0
+        end: 100
+    b:
+      random:
+        start: 0
+        end: 100
+  body: '#What is the sum of the following?
+  {a} + {b}'
+  answer:
+    - 'The answer is \$${a} + {b}$'
+    - 'The answer is \$${a} + {b}$'
+  distractor:
+    - 'The answer is ${a} / {b}$'
+    - 'The answer is ${a} - {b}$'
+    - 'The answer is ${a} * {b}$'

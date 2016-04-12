@@ -1,6 +1,7 @@
 SimpleFoo1:
   title: 'Simple Foo'
   type: 'multichoice'
+  correct_feedback: 'Great job, you can code!'
   imports:
     - 'Functions'
   params:
@@ -24,5 +25,5 @@ SimpleFoo1:
           ```
   answer:
     - '@foo@'
-  distractors:
+  distractor:
     - '@foo_distractor@'

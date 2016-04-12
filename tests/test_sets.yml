@@ -21,6 +21,6 @@ SimpleSets:
 
   {room}'
   answer:
-    - 'The answer is [room]'
+    - 'The answer is [{room}]'
   distractor:
-    - 'The answer is [bathroom,kitchen,office,washroom,~room]'
+    - 'The answer is [bathroom,kitchen,office,washroom,~{room}]'

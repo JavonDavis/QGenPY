@@ -1,11 +1,11 @@
 from qgen import functions
-import random
+from random import choice as random_choice,randint
 from qgen_exceptions import EvaluationException
 
 """Helper functions that are essential to the construction of questions"""
 
 # to help decide if a question is valid
-body_list = []
+question_list = []
 
 
 def evaluate_blocks(text, params):
@@ -23,8 +23,6 @@ def evaluate_blocks(text, params):
         # remove leading and trailing $
         eval_block = substr[1:-1]
 
-        # fill in arguments
-        eval_block = eval_block.format(**params)
         text = text.replace(substr, str(eval(eval_block)))
     text = text.replace("esCA", "$")
     return text
@@ -65,15 +63,11 @@ def evaluate_braces(text, params, params_cache):
                     if params_cache[var]:
                         variables.append(var.strip())
             elif choice[0] == '~':
-                var = choice[1:]
+                var = choice[1:].strip()
                 if var in params:
-                    unwanted.append(params[var].strip())
+                    unwanted.append(var)
                 else:
                     unwanted.append(choice)
-            elif choice in params and params[choice].strip() in params:
-                result = params[params[choice].strip()]
-                text = text.replace(substr, str(result))
-                return text
             else:
                 if params_cache[choice]:
                     variables.append(choice)
@@ -81,26 +75,26 @@ def evaluate_braces(text, params, params_cache):
                 if var in variables:
                     variables.remove(var)
 
-        index = random.randint(0, len(variables) - 1)
-        result = params_cache[variables[index]].pop()
+        index = randint(0, len(variables) - 1)
+        result = random_choice(params_cache[variables[index]])
         text = text.replace(substr, str(result))
     return text
 
 
 def validate_question(body, answers, distractors):
-    if not valid_body(body):
-        return None
-
     answers, distractors = validate_answer_distractor(answers, distractors)
     if answers:
+        if not valid_question(body, answers, distractors):
+            return None
         return body, answers, distractors
     else:
         return None
 
 
-def valid_body(body):
-    is_valid = body not in body_list
-    body_list.append(body)
+def valid_question(body, answers, distractors):
+    description = (body,set(answers),set(distractors))
+    is_valid = description in question_list
+    question_list.append(description)
     return is_valid
 
 

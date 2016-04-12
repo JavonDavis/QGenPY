@@ -1,5 +1,6 @@
 import moodle_xml_builder as mxb
 import markdown2
+from random import choice
 from qgen.qgen_exceptions import EvaluationException
 from qgen.build_helpers import evaluate_braces, evaluate_functions, evaluate_blocks, validate_question
 
@@ -14,7 +15,8 @@ def gen_moodle_xml(question):
     params = {}
     for key, value in question.question_params.iteritems():
         try:
-            params[key] = value.pop()
+
+            params[key] = choice(value)
         except IndexError as e:
             print e
     print question.body.format(**params)
@@ -38,6 +40,7 @@ def gen_moodle_xml(question):
     # Evaluate answers
     for answer in question.answers:
         original_params = question.params_cache
+        answer = answer.format(**params)
         answer_cache = answer
         try:
             answer = evaluate_braces(answer, params, original_params)
@@ -53,6 +56,7 @@ def gen_moodle_xml(question):
     # Evaluate distractors
     for distractor in question.distractors:
         original_params = question.params_cache
+        distractor = distractor.format(**params)
         distractor_cache = distractor
         try:
             distractor = evaluate_braces(distractor, params, original_params)

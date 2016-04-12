@@ -16,7 +16,7 @@ TEST_SETS_YML_PATH = os.getcwd() + "/tests/test_sets.yml"
 TEST_BAD_YML_PATH = os.getcwd() + "/tests/test_missing_config.yml"
 TEST_CODE_BLOCK_YML_PATH = os.getcwd() + "/tests/test_code_block.yml"
 TEST_NO_REPEATS_PATH = os.getcwd() + "/tests/test_no_repetitions.yml"
-TEST_NO_REPEATS_PATH = os.getcwd() + "/tests/test_no_repetitions_2.yml"
+TEST_NO_REPEATS_PATH_2 = os.getcwd() + "/tests/test_no_repetitions_2.yml"
 
 
 class TestSuite(unittest.TestCase):
@@ -49,7 +49,7 @@ class TestSuite(unittest.TestCase):
 
     def test_no_repetitions_b(self):
         """Should only generate one question vs the 2 requested and with only one answer vs the two that are the same"""
-        qgen.build_moodle_xml(TEST_NO_REPEATS_PATH, question="SimpleRepetition", number_of_questions=1)
+        qgen.build_moodle_xml(TEST_NO_REPEATS_PATH_2, question="SimpleRepetition", number_of_questions=1)
 
 if __name__ == '__main__':
     unittest.main()

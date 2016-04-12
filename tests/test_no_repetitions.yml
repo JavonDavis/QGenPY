@@ -13,7 +13,7 @@ SimpleRepetition:
   body: '#What is the sum of the following?
   {a} + {b}'
   answer:
-    - 'The answer is \${a} + {b}$'
+    - 'The answer is \$${a} + {b}$'
   distractor:
     - 'The answer is ${a} / {b}$'
     - 'The answer is ${a} - {b}$'

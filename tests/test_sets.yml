@@ -7,21 +7,21 @@ SimpleSets:
   incorrect_answer_weight: '' #Defaulted to 0
   params:
     room:
-      set:
-        bathroom:
-          set: toothbrush, paste, shampoo
-        office:
-          set: pen, paper
-        washroom:
-          set: brush, pan
-        kitchen:
-          set: knife, spoon
+      set: bathroom,office,washroom,kitchen
+    bathroom:
+      set: toothbrush, paste, shampoo
+    office:
+      set: pen, paper
+    washroom:
+      set: brush, pan
+    kitchen:
+      set: knife, spoon
 
 
   body: '#Which item would you find in the following room?
 
   {room}'
   answer:
-    - 'The answer is !(room.{room})'
+    - 'The answer is @params({room})@'
   distractor:
-    - 'The answer is !(room.bathroom | room.kitchen | room.office | room.washroom - {room})'
+    - 'The answer is @params_except({room},room)@'

@@ -23,10 +23,10 @@ class Question(object):
 
     def add_config(self, config):
         body, q_type, title, answer = self.add_compulsory_config(config) if self.check_config(config) else None
-        tags = ['correct_feedback', 'incorrect_feedback', 'correct_answer_weight']
+        tags = ['correct_feedback', 'incorrect_feedback', 'correct_answer_weight', 'incorrect_answer_weight']
         q_distractor = config['distractor'] if 'distractor' in config else {}
-        q_correct_feedback, q_incorrect_feedback, q_correct_answer_weight, q_incorrect_answer_weight = map(
-            lambda tag: config['tag'] if tag in config else "", tags)
+        q_correct_feedback, q_incorrect_feedback, q_correct_answer_weight, q_incorrect_answer_weight = \
+            map(lambda tag: config[tag] if tag in config else "", tags)
         return body, q_type, title, answer, q_distractor, q_correct_feedback, q_incorrect_feedback, \
             q_correct_answer_weight, q_incorrect_answer_weight
 

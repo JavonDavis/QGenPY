@@ -30,6 +30,7 @@ def evaluate_blocks(text, params):
 
 def evaluate_functions(text, params):
     """Evaluates the functions delimited by a @ in a question's answer or distractor"""
+    text = text.replace("\@", "esAM")
     while "@" in text:
         start_index = text.index('@')
         end_index = text.index('@', start_index + 1) + 1
@@ -40,6 +41,7 @@ def evaluate_functions(text, params):
         function_name = eval_block
 
         text = text.replace(substr, str(functions[function_name](params)))
+    text = text.replace("esCA", "@")
     return text
 
 

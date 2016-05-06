@@ -5,20 +5,6 @@ from qgen_exceptions import EvaluationException
 """Helper functions that are essential to the construction of questions"""
 
 
-# TODO - pick a random value from a parameter
-def params_get(*args):
-    print params
-    return choice(params[choice(args)])
-
-
-# TODO - pick a random value from a random parameter except these specified
-def params_except(*args):
-    keys = params.keys()
-    for arg in args:
-        keys.remove(arg)
-    return choice(params[choice(keys)])
-
-
 # to help decide if a question is valid
 question_list = []
 
@@ -26,6 +12,16 @@ question_list = []
 # TODO - check if any case where the parameters might be needed to evaluate the eval blocks
 def evaluate_blocks(text, params):
     """Evaluates the code blocks delimited by a $ in a question's answer or distractor"""
+    # TODO - pick a random value from a parameter
+    def params_get(*args):
+        return choice(params[choice(args)])
+
+    # TODO - pick a random value from a random parameter except these specified
+    def params_except(*args):
+        keys = params.keys()
+        for arg in args:
+            keys.remove(arg)
+        return choice(params[choice(keys)])
     text = text.replace("\$", "esCA")
     if text.count("$") % 2 != 0:
         raise EvaluationException("Incorrect number of $ found in a block")
@@ -73,8 +69,12 @@ def validate_question(body, answers, distractors):
 
 def valid_question(body, answers, distractors):
     description = (body, set(answers), set(distractors))
-    is_valid = description in question_list
-    question_list.append(description)
+
+    if description in question_list:
+        is_valid = False
+    else:
+        is_valid = True
+        question_list.append(description)
     return is_valid
 
 

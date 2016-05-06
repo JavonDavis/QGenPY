@@ -18,7 +18,7 @@ def gen_moodle_xml(question):
 
             params[key] = choice(value)
         except IndexError as e:
-            print e
+            raise EvaluationException("%s - %s" % (str(question.question_params), e.message))
     print question.body.format(**params)
     print "********Options*********"
 
@@ -26,7 +26,7 @@ def gen_moodle_xml(question):
     body_cache = body_for_xml
     try:
         body_for_xml = evaluate_functions(body_for_xml, params)
-        body_for_xml = evaluate_blocks(body_for_xml, params)
+        body_for_xml = evaluate_blocks(body_for_xml, question.params_cache)
     except Exception as e:
         raise EvaluationException("%s - %s" % (body_cache, e.message))
     body_for_xml = container % markdown2.markdown(body_for_xml, extras=["fenced-code-blocks",
@@ -56,7 +56,7 @@ def gen_moodle_xml(question):
         distractor_cache = distractor
         try:
             distractor = evaluate_functions(distractor, params)
-            distractor = evaluate_blocks(distractor, params)
+            distractor = evaluate_blocks(distractor, question.params_cache)
         except Exception as e:
             raise EvaluationException("%s - %s" % (distractor_cache, e.message))
         distractor = container % markdown2.markdown(distractor)

@@ -22,6 +22,6 @@ SimpleSets:
 
   {room}'
   answer:
-    - 'The answer is @params({room})@'
+    - 'The answer is $params_get("{room}")$'
   distractor:
-    - 'The answer is @params_except({room},room)@'
+    - 'The answer is $params_except("{room}","room")$'

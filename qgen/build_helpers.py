@@ -4,6 +4,20 @@ from qgen_exceptions import EvaluationException
 
 """Helper functions that are essential to the construction of questions"""
 
+
+# TODO - pick a random value from a parameter
+def params_get(*args):
+    return random_choice(parameters[random_choice(args)])
+
+
+# TODO - pick a random value from a random parameter except these specified
+def params_except(*args):
+    x = parameters
+    keys = parameters.keys()
+    for arg in args:
+        keys.remove(arg)
+    return random_choice(parameters[random_choice(keys)])
+
 # to help decide if a question is valid
 question_list = []
 
@@ -24,7 +38,7 @@ def evaluate_blocks(text, params):
         # remove leading and trailing $
         eval_block = substr[1:-1]
 
-        text = text.replace(substr, str(eval(eval_block)))
+        text = text.replace(substr, str(eval(eval_block, {'parameters': params})))
     text = text.replace("esCA", "$")
     return text
 

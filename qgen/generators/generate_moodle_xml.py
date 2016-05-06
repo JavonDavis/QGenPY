@@ -2,7 +2,7 @@ import moodle_xml_builder as mxb
 import markdown2
 from random import choice
 from qgen.qgen_exceptions import EvaluationException
-from qgen.build_helpers import evaluate_braces, evaluate_functions, evaluate_blocks, validate_question
+from qgen.build_helpers import evaluate_functions, evaluate_blocks, validate_question
 
 """Functions to generate questions in different formats"""
 
@@ -25,7 +25,6 @@ def gen_moodle_xml(question):
     body_for_xml = question.body.format(**params)
     body_cache = body_for_xml
     try:
-        body_for_xml = evaluate_braces(body_for_xml, params, question.params_cache)
         body_for_xml = evaluate_functions(body_for_xml, params)
         body_for_xml = evaluate_blocks(body_for_xml, params)
     except Exception as e:
@@ -39,11 +38,9 @@ def gen_moodle_xml(question):
     answers = []
     # Evaluate answers
     for answer in question.answers:
-        original_params = question.params_cache
         answer = answer.format(**params)
         answer_cache = answer
         try:
-            answer = evaluate_braces(answer, params, original_params)
             answer = evaluate_functions(answer, params)
             answer = evaluate_blocks(answer, params)
         except Exception as e:
@@ -55,11 +52,9 @@ def gen_moodle_xml(question):
     distractors = []
     # Evaluate distractors
     for distractor in question.distractors:
-        original_params = question.params_cache
         distractor = distractor.format(**params)
         distractor_cache = distractor
         try:
-            distractor = evaluate_braces(distractor, params, original_params)
             distractor = evaluate_functions(distractor, params)
             distractor = evaluate_blocks(distractor, params)
         except Exception as e:

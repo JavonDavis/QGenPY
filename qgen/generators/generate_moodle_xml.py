@@ -42,7 +42,7 @@ def gen_moodle_xml(question):
         answer_cache = answer
         try:
             answer = evaluate_functions(answer, params)
-            answer = evaluate_blocks(answer, params)
+            answer = evaluate_blocks(answer, question.params_cache)
         except Exception as e:
             raise EvaluationException("%s - %s" % (answer_cache, e.message))
         answer = container % markdown2.markdown(answer)

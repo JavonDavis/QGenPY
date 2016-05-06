@@ -30,6 +30,17 @@ class Question(object):
         return body, q_type, title, answer, q_distractor, q_correct_feedback, q_incorrect_feedback, \
             q_correct_answer_weight, q_incorrect_answer_weight
 
+    # TODO - pick a random value from a parameter
+    def params_get(*args):
+        return choice(params[choice(args)])
+
+    # TODO - pick a random value from a random parameter except these specified
+    def params_except(*args):
+        keys = params.keys()
+        for arg in args:
+            keys.remove(arg)
+        return choice(params[choice(keys)])
+
     @staticmethod
     def check_config(config):
         for name in Question.COMPULSORY_CONFIGS:

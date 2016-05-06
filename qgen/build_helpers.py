@@ -1,5 +1,5 @@
 from qgen import functions
-from random import choice as random_choice,randint
+from random import choice
 from qgen_exceptions import EvaluationException
 
 """Helper functions that are essential to the construction of questions"""
@@ -7,16 +7,17 @@ from qgen_exceptions import EvaluationException
 
 # TODO - pick a random value from a parameter
 def params_get(*args):
-    return random_choice(parameters[random_choice(args)])
+    print params
+    return choice(params[choice(args)])
 
 
 # TODO - pick a random value from a random parameter except these specified
 def params_except(*args):
-    x = parameters
-    keys = parameters.keys()
+    keys = params.keys()
     for arg in args:
         keys.remove(arg)
-    return random_choice(parameters[random_choice(keys)])
+    return choice(params[choice(keys)])
+
 
 # to help decide if a question is valid
 question_list = []
@@ -38,7 +39,7 @@ def evaluate_blocks(text, params):
         # remove leading and trailing $
         eval_block = substr[1:-1]
 
-        text = text.replace(substr, str(eval(eval_block, {'parameters': params})))
+        text = text.replace(substr, str(eval(eval_block)))
     text = text.replace("esCA", "$")
     return text
 
@@ -71,7 +72,7 @@ def validate_question(body, answers, distractors):
 
 
 def valid_question(body, answers, distractors):
-    description = (body,set(answers),set(distractors))
+    description = (body, set(answers), set(distractors))
     is_valid = description in question_list
     question_list.append(description)
     return is_valid

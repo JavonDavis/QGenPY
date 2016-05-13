@@ -6,7 +6,7 @@ import generators.moodle_xml_builder as mxb
 
 
 class Question(object):
-    COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']
+    COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']  # Tags that need to be in the template
 
     """Class to model a generate questions"""
 
@@ -30,22 +30,11 @@ class Question(object):
         return body, q_type, title, answer, q_distractor, q_correct_feedback, q_incorrect_feedback, \
             q_correct_answer_weight, q_incorrect_answer_weight
 
-    # TODO - pick a random value from a parameter
-    def params_get(*args):
-        return choice(params[choice(args)])
-
-    # TODO - pick a random value from a random parameter except these specified
-    def params_except(*args):
-        keys = params.keys()
-        for arg in args:
-            keys.remove(arg)
-        return choice(params[choice(keys)])
-
     @staticmethod
     def check_config(config):
         for name in Question.COMPULSORY_CONFIGS:
             if name not in config:
-                raise InvalidConfigException(name + " is missing from the configuration.")  # TODO- use formatting
+                raise InvalidConfigException(name + " is missing from the configuration.")
         return True
 
     @staticmethod
@@ -81,10 +70,6 @@ class Question(object):
                 function_arguments['count'] = self.question_count
                 list_params = functions[function_param](function_arguments)
             self.question_params[parameter_name] = list_params
-
-
-def test():
-    print "Hello World"
 
 
 def build_moodle_xml(yml_file=None, question=None, number_of_questions=10):

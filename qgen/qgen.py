@@ -6,14 +6,15 @@ import generators.moodle_xml_builder as mxb
 
 
 class Question(object):
-    COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']
+    COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']  # Tags that need to be in the template
 
     """Class to model a generate questions"""
 
     def __init__(self, configuration, question_count=0):
         self.question_params = {}
-        self.body, self.type, self.title, self.answers, self.distractors, self.correct_feedback, self.incorrect_feedback \
-            , self.correct_answer_weight, self.incorrect_answer_weight = self.add_config(configuration)
+        self.body, self.type, self.title, self.answers, self.distractors, self.correct_feedback, \
+            self.incorrect_feedback, self.correct_answer_weight, \
+            self.incorrect_answer_weight = self.add_config(configuration)
         self.question_count = question_count
         self.add_imports(configuration)
         if 'params' in configuration:
@@ -22,13 +23,12 @@ class Question(object):
 
     def add_config(self, config):
         body, q_type, title, answer = self.add_compulsory_config(config) if self.check_config(config) else None
+        tags = ['correct_feedback', 'incorrect_feedback', 'correct_answer_weight', 'incorrect_answer_weight']
         q_distractor = config['distractor'] if 'distractor' in config else {}
-        q_correct_feedback = config['correct_feedback'] if 'correct_feedback' in config else ""
-        q_incorrect_feedback = config['incorrect_feedback'] if 'incorrect_feedback' in config else ""
-        q_correct_answer_weight = config['correct_answer_weight'] if 'correct_answer_weight' in config else ""
-        q_incorrect_answer_weight = config['incorrect_answer_weight'] if 'incorrect_answer_weight' in config else ""
-        return body, q_type, title, answer, q_distractor, q_correct_feedback \
-            , q_incorrect_feedback, q_correct_answer_weight, q_incorrect_answer_weight
+        q_correct_feedback, q_incorrect_feedback, q_correct_answer_weight, q_incorrect_answer_weight = \
+            map(lambda tag: config[tag] if tag in config else "", tags)
+        return body, q_type, title, answer, q_distractor, q_correct_feedback, q_incorrect_feedback, \
+            q_correct_answer_weight, q_incorrect_answer_weight
 
     @staticmethod
     def check_config(config):
@@ -70,10 +70,6 @@ class Question(object):
                 function_arguments['count'] = self.question_count
                 list_params = functions[function_param](function_arguments)
             self.question_params[parameter_name] = list_params
-
-
-def test():
-    print "Hello World"
 
 
 def build_moodle_xml(yml_file=None, question=None, number_of_questions=10):

@@ -76,15 +76,25 @@ def build_moodle_xml(yml_file=None, question=None, number_of_questions=10):
     from generators.generate_moodle_xml import gen_moodle_xml
     with open(yml_file, 'r') as stream:
         try:
+            threshold = 50
             dict_value = yaml.load(stream)
             if question is not None:
                 question = Question(dict_value[question], number_of_questions)
-                print "--------Question Data--------"
+                print "Question {}".format(question.title)
                 xml_builder = mxb.QuizBuilder(question.title)
                 xml_builder.setup()
-                for i in range(0, number_of_questions):
-                    gen_moodle_xml(question)
+                count = 0
+                effort = 0
+                while count < number_of_questions and effort < threshold:
+                    result = gen_moodle_xml(question)
+                    if result == 0:
+                        effort += 1
+                    count += result
                 xml_builder.build_quiz_end_tag()
+                if effort == threshold:
+                    print "Could not generate {} questions at best {} questions were generated. " \
+                          "Threshold is currently set to {} increasing this value might increase the number of " \
+                          "questions generated.".format(number_of_questions, count, threshold)
                 print "-----------------------------"
             else:
                 print dict_value

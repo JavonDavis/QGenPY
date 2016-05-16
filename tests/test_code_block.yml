@@ -6,9 +6,9 @@ SimpleFoo1:
     - 'Functions'
   params:
     param:
-      random:
+      randrange:
         start: 1
-        end: 100
+        end: 5
   body: >
           # What is result of running foo({param})
 

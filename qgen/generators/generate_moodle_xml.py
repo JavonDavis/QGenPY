@@ -9,8 +9,8 @@ from qgen.build_helpers import evaluate_functions, evaluate_blocks, validate_que
 container = "<![CDATA[%s]]>"
 
 
-def gen_moodle_xml(question):
-    """Function to generate the questions in Moodle XML format"""
+def gen_question(question):
+    """Function to generate a question in plain text format"""
 
     params = {}
     for key, value in question.question_params.iteritems():
@@ -19,8 +19,6 @@ def gen_moodle_xml(question):
             params[key] = choice(value)
         except IndexError as e:
             raise EvaluationException("%s - %s" % (str(question.question_params), e.message))
-    print question.body.format(**params)
-    print "********Options*********"
 
     body_for_xml = question.body.format(**params)
     body_cache = body_for_xml
@@ -47,7 +45,6 @@ def gen_moodle_xml(question):
             raise EvaluationException("%s - %s" % (answer_cache, e.message))
         answer = container % markdown2.markdown(answer)
         answers.append(answer)
-        print answer
 
     distractors = []
     # Evaluate distractors
@@ -61,9 +58,14 @@ def gen_moodle_xml(question):
             raise EvaluationException("%s - %s" % (distractor_cache, e.message))
         distractor = container % markdown2.markdown(distractor)
         distractors.append(distractor)
-        print distractor
 
-    is_valid = validate_question(body_for_xml, answers, distractors)
+    return validate_question(body_for_xml, answers, distractors)
+
+
+def gen_moodle_xml(question):
+    """Function to generate the questions in Moodle XML format"""
+
+    is_valid = gen_question(question)
 
     if is_valid:
         body_for_xml, answers, distractors = is_valid
@@ -80,5 +82,5 @@ def gen_moodle_xml(question):
             xml_builder.build_distractor_for_xml(distractor, question.incorrect_feedback, question.incorrect_answer_weight)
 
         xml_builder.build_question_end_tag()
-        return str(xml_builder)
-    return None
+        return 1
+    return 0

@@ -1,7 +1,7 @@
 import random
 
 
-class Polynomial():
+class Polynomial:
     st = range(0, 149)
 
     def __init__(self):

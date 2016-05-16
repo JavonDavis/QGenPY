@@ -28,7 +28,7 @@ class TestSuite(unittest.TestCase):
 
     @staticmethod
     def test_b_generate_moodle_xml():
-        qgen.build_moodle_xml(TEST_SIMPLE_YML_PATH, number_of_questions=2)
+        qgen.build_moodle_xml(TEST_SIMPLE_YML_PATH, number_of_questions=20)
 
     @staticmethod
     def test_a_sets():

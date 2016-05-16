@@ -74,6 +74,6 @@ class QuizBuilder(object):
 
     def build_quiz_end_tag(self):
         self.result += "</quiz>"
-        with open(generated_quiz_path + self.xml_title + ".xml", "a+") as output_file:
+        with open(generated_quiz_path + self.xml_title + ".xml", "wb+") as output_file:
             output_file.write(self.result)
         output_file.close()

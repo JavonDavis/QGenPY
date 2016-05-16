@@ -6,7 +6,7 @@ import generators.moodle_xml_builder as mxb
 
 
 class Question(object):
-    COMPULSORY_CONFIGS = ['type', 'title', 'answer', 'body']  # Tags that need to be in the template
+    COMPULSORY_CONFIGS = ['type', 'title', 'body']  # Tags that need to be in the template
 
     """Class to model a generate questions"""
 
@@ -22,9 +22,10 @@ class Question(object):
         self.params_cache = self.question_params
 
     def add_config(self, config):
-        body, q_type, title, answer = self.add_compulsory_config(config) if self.check_config(config) else None
+        body, q_type, title = self.add_compulsory_config(config) if self.check_config(config) else None
         tags = ['correct_feedback', 'incorrect_feedback', 'correct_answer_weight', 'incorrect_answer_weight']
-        q_distractor = config['distractor'] if 'distractor' in config else {}
+        answer = config['answer'] if 'answer' in config else []
+        q_distractor = config['distractor'] if 'distractor' in config else []
         q_correct_feedback, q_incorrect_feedback, q_correct_answer_weight, q_incorrect_answer_weight = \
             map(lambda tag: config[tag] if tag in config else "", tags)
         return body, q_type, title, answer, q_distractor, q_correct_feedback, q_incorrect_feedback, \
@@ -39,7 +40,7 @@ class Question(object):
 
     @staticmethod
     def add_compulsory_config(config):
-        return config['body'], config['type'], config['title'], config['answer']
+        return config['body'], config['type'], config['title']
 
     @staticmethod
     def add_imports(data):

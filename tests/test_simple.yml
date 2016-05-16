@@ -8,11 +8,11 @@ SimpleAddition:
   params:
     a:
       randrange:
-        start: 0
+        start: 1
         end: 100
     b:
       randrange:
-        start: 0
+        start: 1
         end: 100
   body: '#What is the sum of the following?
   {a} + {b}'

@@ -72,31 +72,30 @@ class Question(object):
             self.question_params[parameter_name] = list_params
 
 
-def build_moodle_xml(yml_file=None, question=None, number_of_questions=10):
+def build_moodle_xml(yml_file=None, number_of_questions=10):
     from generators.generate_moodle_xml import gen_moodle_xml
     with open(yml_file, 'r') as stream:
         try:
             threshold = 50
             dict_value = yaml.load(stream)
-            if question is not None:
-                question = Question(dict_value[question], number_of_questions)
-                print "Question {0}".format(question.title)
-                xml_builder = mxb.QuizBuilder(question.title)
-                xml_builder.setup()
-                count = 0
-                effort = 0
-                while count < number_of_questions and effort < threshold:
-                    result = gen_moodle_xml(question)
-                    if result == 0:
-                        effort += 1
-                    count += result
-                xml_builder.build_quiz_end_tag()
-                if effort == threshold:
-                    print "Could not generate {0} questions at best {1} questions were generated. " \
-                          "Threshold is currently set to {2} increasing this value might increase the number of " \
-                          "questions generated.".format(number_of_questions, count, threshold)
-                print "-----------------------------"
-            else:
-                print dict_value
+            title = dict_value.keys()[0]
+
+            question = Question(dict_value[title], number_of_questions)
+            print "Question {0}".format(title)
+            xml_builder = mxb.QuizBuilder(title)
+            xml_builder.setup()
+            count = 0
+            effort = 0
+            while count < number_of_questions and effort < threshold:
+                result = gen_moodle_xml(question)
+                if result == 0:
+                    effort += 1
+                count += result
+            xml_builder.build_quiz_end_tag()
+            if effort == threshold:
+                print "Could not generate {0} questions at best {1} questions were generated. " \
+                      "Threshold is currently set to {2} increasing this value might increase the number of " \
+                      "questions generated.".format(number_of_questions, count, threshold)
+            print "-----------------------------"
         except yaml.YAMLError as exc:
             print(exc)

@@ -3,9 +3,8 @@ import random
 """All built in functions source code should be written in this file"""
 
 
-# TODO - account for list of strings or other data types
 def randrange(values):
-    return random.sample(range(values['start'], values['end']), values['count'])
+    return random.sample(range(values['start'], values['end']), values['end'] - values['start'])
 
 
 def make_set(values):

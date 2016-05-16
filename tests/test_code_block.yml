@@ -6,7 +6,7 @@ SimpleFoo1:
     - 'Functions'
   params:
     param:
-      randrange:
+      randint:
         start: 1
         end: 5
   body: >

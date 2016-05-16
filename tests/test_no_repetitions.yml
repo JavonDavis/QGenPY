@@ -3,11 +3,11 @@ SimpleRepetition:
   type: 'multichoice'
   params:
     a:
-      randrange:
+      randint:
         start: 0
         end: 100
     b:
-      randrange:
+      randint:
         start: 0
         end: 100
   body: '#What is the sum of the following?

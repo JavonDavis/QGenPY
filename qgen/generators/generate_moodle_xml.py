@@ -62,7 +62,7 @@ def gen_question(question):
     return validate_question(body_for_xml, answers, distractors)
 
 
-def gen_moodle_xml(question):
+def gen_moodle_xml(question, xml_builder):
     """Function to generate the questions in Moodle XML format"""
 
     is_valid = gen_question(question)
@@ -71,7 +71,6 @@ def gen_moodle_xml(question):
         body_for_xml, answers, distractors = is_valid
 
         # Translate to Moodle XMl
-        xml_builder = mxb.QuizBuilder(question.title)
 
         xml_builder.build_question_for_xml(question.title, body_for_xml, question.type)
 

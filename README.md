@@ -12,3 +12,21 @@ QGen is available through PyPi and be installed using pip
 pip install qgen
 ```
 
+## Usage
+
+QGen needs either a yaml file or a python dictionary describing the configuration of question to be able to generate questions. 
+
+Open up a python console and then import qgen and use as follows:
+
+### YAML file 
+```Python
+import qgen
+qgen.build_moodle_xml('/path/to/yaml/file/test.yml', number_of_questions=50)
+```
+
+### Python Dictionary
+
+```Python
+import qgen
+qgen.build_moodle_xml(dict_value=configuation_as_dictionary, number_of_questions=50)
+```

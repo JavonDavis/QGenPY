@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='qgen',
-    version='1.2',
+    version='1.3',
     description='Question generating framework',
     long_description="Generate a random value of questions based on a template",
     author='Javon Davis, Howard Edwards, Alexander Nicholson',

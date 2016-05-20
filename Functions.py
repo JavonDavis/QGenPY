@@ -1,5 +1,5 @@
 def foo(values):
-    x = values['param']
+    x = values['foo_arg']
     return foo_helper(0, 1, x)
 
 
@@ -11,5 +11,6 @@ def foo_helper(p, q, r):
 
 
 def foo_distractor(values):
-    x = values['param']
+    x = values['foo_arg']
     return foo_helper(0, 1, x+1)
+

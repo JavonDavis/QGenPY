@@ -9,14 +9,13 @@ from qgen_exceptions import EvaluationException
 question_list = []
 
 
-# TODO - check if any case where the parameters might be needed to evaluate the eval blocks
 def evaluate_blocks(text, params):
     """Evaluates the code blocks delimited by a $ in a question's answer or distractor"""
-    # TODO - pick a random value from a parameter
+    # Pick a random value from a parameter
     def params_get(*args):
         return choice(params[choice(args)])
 
-    # TODO - pick a random value from a random parameter except these specified
+    # Pick a random value from a random parameter except these specified
     def params_except(*args):
         keys = params.keys()
         for arg in args:
@@ -43,6 +42,8 @@ def evaluate_blocks(text, params):
 def evaluate_functions(text, params):
     """Evaluates the functions delimited by a @ in a question's answer or distractor"""
     text = text.replace("\@", "esAM")
+    if text.count("@") % 2 != 0:
+        raise EvaluationException("Incorrect number of @ found in a block")
     while "@" in text:
         start_index = text.index('@')
         end_index = text.index('@', start_index + 1) + 1

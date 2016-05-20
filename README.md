@@ -24,6 +24,8 @@ import qgen
 qgen.build_moodle_xml('/path/to/yaml/file/test.yml', number_of_questions=50)
 ```
 
+For a description of what the YAML file should look like, please see the Getting Started guide in the Wiki.
+
 ### Python Dictionary
 
 ```Python

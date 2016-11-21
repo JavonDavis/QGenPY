@@ -1,6 +1,6 @@
 # QGenPY Command Line app
 
-Generate a volume of questions based on a template. Source for Web app located at https://github.com/JA-VON/QGen-UI and hosted at 104.236.42.106
+Generate a volume of questions based on a template. Source for Web app located at https://github.com/JA-VON/QGen-UI
 
 ## Installation
 

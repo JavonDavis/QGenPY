@@ -1,6 +1,6 @@
 # QGenPY
 
-Generate a volume of questions based on a template. Source for Web app located at https://github.com/JA-VON/QGen-UI
+A Python package for generating a volume of questions based on a template. Source for Web app located at https://github.com/JA-VON/QGen-UI
 
 ## Installation
 
